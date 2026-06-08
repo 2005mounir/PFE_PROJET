@@ -1,0 +1,1252 @@
+
+
+
+/* ==========================================================================
+   code css for contact.ph
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contactBody{
+    background-color: #f3f4f6; 
+    color: #1f2937;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.main-content-wrapper {
+    max-width: 1000px;
+    width: 90%;
+    margin: 50px auto;
+    background-color: #ffffff; 
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    padding: 40px;
+}
+
+/* title of page*/
+.contact-header-section h2 {
+    font-size: 2rem;
+    color: #3c75c5;
+    font-weight: 600;
+}
+
+.contact-header-section p {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+/* style hero sectio image*/
+.contact-hero-image {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 35px;
+    display: block;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; 
+    gap: 50px;
+    align-items: start;
+}
+
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group .contactlable {
+    font-size: 15px;
+    font-weight: 500;
+      color: #4b5563;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    color: #1f2937;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* submit button*/
+.btn-submit-msg {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #1a66ff; 
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: auto; 
+    margin-top: 5px;
+}
+
+.btn-submit-msg:hover {
+    background-color: #0052cc;
+}
+
+.contact-info-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 5px;
+}
+
+.info-block h3 {
+    font-size: 1.1rem;
+    color: #3c75c5;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+.info-item i {
+    color: #2563eb;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+    .main-header {
+        display: flex !important;
+        flex-direction: row !important; 
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 15px 5%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+.info-item i.fa-brands.fa-instagram {
+    color: #e1306c;
+    font-size: 1.2rem;
+}
+
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #1e3a8a;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1002; 
+}
+
+
+
+
+
+/*respnsive contact page*/
+
+@media (min-width: 1024px){
+    
+    .main-content-wrapper {
+        max-width: 1280px; 
+        padding: 50px 60px;
+        margin: 50px auto;
+    }
+
+    .contact-header-section h2 {
+        font-size: 2.6rem;
+        letter-spacing: -0.5px;
+    }
+
+    .contact-header-section p {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr; 
+        gap: 90px; 
+        width: 100%;
+        align-items: start;
+    }
+
+    .contact-form-side {
+        width: 100%;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 8px;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        width: 100% !important; 
+        padding: 16px 20px; 
+        font-size: 1.05rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        background-color: #f8fafc;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+        background-color: #ffffff;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    }
+
+    .btn-submit-msg {
+        padding: 16px 45px;
+        font-size: 1.05rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(26, 102, 255, 0.2);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn-submit-msg:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(26, 102, 255, 0.3);
+    }
+
+    .contact-info-sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-left: 45px; 
+        border-left: 1px solid #e2e8f0;
+        padding-top: 45px; 
+    }
+
+    .info-block {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px; 
+    }
+
+    .info-block h3 {
+        font-size: 1.3rem;
+        color: #1e3a8a;
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    .info-block h3::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background-color: #2563eb;
+        border-radius: 2px;
+    }
+
+    .info-item {
+        width: 100%; 
+        margin-bottom: 0; 
+        font-size: 1.05rem;
+        background-color: #f8fafc;
+        padding: 16px 20px; 
+        border-radius: 8px;
+        border: 1px solid #f1f5f9;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .info-item:hover {
+        background-color: #f1f5f9;
+        transform: translateX(5px);
+    }
+
+    .info-item i {
+        font-size: 1.3rem;
+        color: #2563eb;
+    }
+    
+    .info-item span {
+        font-weight: 500;
+        color: #374151;
+    }
+}
+
+
+
+
+
+@media (max-width: 900px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        margin-right: auto; 
+    }
+
+    .header-right-side {
+        position: fixed;
+        top: 0;
+        right: 0; 
+        width: 280px; 
+        height: 100vh; 
+        background-color: #ffffff;
+        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+        padding: 80px 30px 30px 30px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 35px;
+        z-index: 1001;
+        
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        
+        display: flex; 
+    }
+
+    .header-right-side.active {
+        transform: translateX(0);
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 22px;
+    }
+
+    .nav-link {
+        width: 100%;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 5px 0;
+        border-bottom: 1px solid #f9fafb;
+    }
+
+    .nav-link.add-house {
+        border-radius: 6px;
+        background-color: #2563eb;
+        color: #ffffff !important;
+        justify-content: center;
+        padding: 12px;
+        margin-top: 10px;
+    }
+
+    .auth-container {
+        width: 100%;
+        border-top: 1px solid #f3f4f6;
+        padding-top: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .btn-login {
+        font-size: 1.1rem;
+        padding: 5px 0;
+    }
+    
+    .btn-account, .btn-signup {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    
+    .footer-container {
+        grid-template-columns: 1fr; /* Stack columns vertically on mobile */
+        gap: 40px;
+        text-align: center;
+    }
+
+    .footer-about p {
+        margin: 0 auto;
+    }
+
+    .footer-links ul li a:hover {
+        transform: none;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    .header-right-side {
+        flex-direction: column;
+        gap: 15px;
+        width: 60%;
+    }
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .contact-hero-image {
+        height: 220px;
+    }
+    
+}
+
+/* ==========================================================================
+    end code css of contact.php
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+    code css for add.php
+   ========================================================================== */
+.body {
+    background-size: cover;         
+    background-position: center;
+    background-repeat: no-repeat;    
+    background-attachment: fixed;    
+    
+}
+
+
+.main-content {
+    width: 90%; 
+    margin: 40px auto; 
+    padding: 50px;
+    background-color:white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    
+}
+
+h2 {
+    color:#2563eb;
+     font-size: 2rem;
+    padding: 15px;
+    margin-bottom: 20px;
+    
+}
+.addP{
+    font-size:20px;
+    color: #1b1c1c;
+
+}
+#propertyForm {
+   width: 60%;
+   border: 2px rgb(180, 180, 227) solid;
+    padding: 40px;
+    padding-left: 120px;
+    border-radius: 20px;
+    box-shadow: 0 12px 20px  2px #b8c0f9;
+    display: flex;
+    flex-direction: column;
+    
+
+
+}
+
+ #propertyForm .addLable{
+    color: #0c0c0d; 
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 8px;
+    display: block;
+
+
+    
+      
+}
+
+
+input, select, textarea {
+    width: 100% !important; 
+    padding: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #2563eb;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* --- map--- */
+#map {
+    height: 450px;
+    width: 100% !important;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+}
+
+/* --- button--- */
+.btn-submit {
+    width: 100%;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #1e293b;
+}
+
+.row-selects {
+    display: flex;
+    gap: 20px;
+}
+.row-selects > .form-group {
+    flex: 1; 
+}
+
+
+
+/*responsive add.php*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .main-content {
+        max-width: 90%;
+        padding: 40px;
+    }
+
+    #propertyForm {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding:30px;
+    }
+}
+
+
+/* mobile */
+@media (max-width: 768px) {
+   
+    .main-content {
+        max-width: 98%; 
+        margin: 10px auto;
+        padding: 20px;  
+        border-radius: 15px;
+    }
+
+#propertyForm {
+   width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;  
+ 
+}
+    
+    input, select, textarea {
+        font-size: 16px; 
+        padding: 12px;
+    }
+
+    h2 {
+        font-size: 1.5rem; 
+    }
+
+    #propertyForm .addLable{
+    display: block;
+
+
+    
+      
+}
+}
+
+
+/*===========================================
+  end code css add.php
+============================================*/
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================
+       code css register
+   ============================================ */
+
+/* body of register page */
+.registerBody {
+    display: block;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Main Wrapper */
+.register1-wrapper {
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+    width: 90%;
+    margin: 80px auto;
+    background: #ffffff;
+    border: 0.02px solid rgb(202, 202, 241);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px 12px rgba(5, 119, 249, 0.2);
+    min-height: 520px;
+}
+
+/* Image Side */
+.registreImages1 {
+    width: 50%;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+.side-image {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Form Side */
+.register-container1 {
+    width: 50%;
+    padding: 45px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register-container1 h2 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(#2563eb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* Inputs & Select */
+.register-container1 input,
+.register-container1 select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    font-size: 15px;
+    font-family: inherit;
+    background-color: #f8fafc;
+    outline: none;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+}
+
+.register-container1 input:focus,
+.register-container1 select:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.register-container1 input:hover,
+.register-container1 select:hover {
+    border-color: #94a3b8;
+}
+
+.register-container1 input::placeholder {
+    color: #94a3b8;
+}
+
+/* Hide br if any */
+.register-container1 br {
+    display: none;
+}
+
+/* Button */
+.register-container1 button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(#2563eb);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.register-container1 button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+}
+
+.register-container1 button:active {
+    transform: translateY(1px);
+}
+
+/* Select Arrow */
+.register-container1 select {
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+}
+
+/* Error & Success Messages */
+.register-container1 div[style*="color:red"] {
+    background: #fef2f2;
+    border-left: 3px solid #ef4444;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.register-container1 div[style*="color:red"] p {
+    margin: 0;
+    font-size: 13px;
+    color: #dc2626;
+}
+
+.register-container1 div[style*="color:green"] {
+    background: #f0fdf4;
+    border-left: 3px solid #22c55e;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    color: #16a34a;
+    font-size: 14px;
+}
+
+
+
+/*  responsive*/
+
+/* Tablet & Small Desktop (max 900px) */
+@media (max-width: 900px) {
+    .register1-wrapper {
+        flex-direction: column;
+        max-width: 450px;
+        width: 92%;
+        margin: 60px auto;
+        min-height: auto;
+        border-radius: 24px;
+    }
+    
+    .registreImages1 {
+        width: 100%;
+    }
+    
+    .side-image {
+        min-height: 220px;
+        height: 220px;
+    }
+    
+    .register-container1 {
+        width: 100%;
+        padding: 30px;
+    }
+    
+    .register-container1 h2 {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    
+    .register-container1 input,
+    .register-container1 select {
+        padding: 12px 14px;
+        font-size: 14px;
+        margin-bottom: 14px;
+        border-radius: 12px;
+    }
+    
+    .register-container1 button {
+        padding: 12px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+}
+
+/* Small Mobile (max 480px) */
+@media (max-width: 480px) {
+    .register1-wrapper {
+        width: 94%;
+        margin: 40px auto;
+        border-radius: 20px;
+    }
+    
+    .side-image {
+        min-height: 180px;
+        height: 180px;
+    }
+    
+    .register-container1 {
+        padding: 24px;
+    }
+    
+    .register-container1 h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .register-container1 input,
+    .register-container1 select {
+        padding: 10px 12px;
+        font-size: 13px;
+        margin-bottom: 12px;
+        border-radius: 10px;
+    }
+    
+    .register-container1 button {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    
+    .register-container1 div[style*="color:red"],
+    .register-container1 div[style*="color:green"] {
+        padding: 10px;
+        margin-bottom: 16px;
+        font-size: 12px;
+    }
+}
+
+/* Large Screens (min 1400px) */
+@media (min-width: 1400px) {
+    .register1-wrapper {
+        max-width: 1200px;
+        min-height: 560px;
+    }
+    
+    .side-image {
+        min-height: 560px;
+    }
+    
+    .register-container1 {
+        padding: 55px;
+    }
+    
+    .register-container1 h2 {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+    
+    .register-container1 input,
+    .register-container1 select {
+        padding: 16px 18px;
+        font-size: 16px;
+        margin-bottom: 18px;
+        border-radius: 16px;
+    }
+    
+    .register-container1 button {
+        padding: 16px;
+        font-size: 17px;
+        border-radius: 16px;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.register1-wrapper {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+
+/*===============================
+   end code cee register
+=================================*/
+
+
+
+
+
+
+
+
+
+
+/* ============================================
+      code css of login page
+   ============================================ */
+
+/* login body */
+.loginBody {
+    display: block;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+}
+
+.loginBody .register-wrapper {
+    display: flex;
+    flex-direction: row;
+    max-width: 900px;
+    width: 90%;
+    margin: 80px auto;
+    background: #ffffff;
+    border: 0.02px solid rgb(202, 202, 241);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px 12px rgba(5, 119, 249, 0.2);
+    min-height: 480px;
+}
+
+/* Image Side */
+.loginBody .loginImage {
+    width: 50%;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+.loginBody .login-image {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Form Side  register-container */
+.loginBody .register-container {
+    width: 50%;
+    padding: 45px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loginBody .register-container h2 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(#2563eb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* Inputs */
+.loginBody .register-container input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    font-size: 15px;
+    font-family: inherit;
+    background-color: #f8fafc;
+    outline: none;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+}
+
+.loginBody .register-container input:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.loginBody .register-container input:hover {
+    border-color: #94a3b8;
+}
+
+.loginBody .register-container input::placeholder {
+    color: #94a3b8;
+}
+
+/* Hide br */
+.loginBody .register-container br {
+    display: none;
+}
+
+/* Button */
+.loginBody .btnLogin {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(#2563eb);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.loginBody .btnLogin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+}
+
+.loginBody .btnLogin:active {
+    transform: translateY(1px);
+}
+
+/* Link */
+.loginBody .register-container p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.loginBody .register-container p a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.loginBody .register-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Error Messages */
+.loginBody .register-container div[style*="color: red"] {
+    background: #fef2f2;
+    border-left: 3px solid #ef4444;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.loginBody .register-container div[style*="color: red"] p {
+    margin: 0;
+    font-size: 13px;
+    color: #dc2626;
+}
+
+
+
+/*  responsive login */
+
+/* Tablet & Mobile (max 900px) */
+@media (max-width: 900px) {
+    .loginBody .register-wrapper {
+        flex-direction: column;
+        max-width: 420px;
+        width: 92%;
+        margin: 60px auto;
+        min-height: auto;
+        border-radius: 24px;
+    }
+    
+    .loginBody .loginImage {
+        width: 100%;
+    }
+    
+    .loginBody .login-image {
+        min-height: 200px;
+        height: 200px;
+    }
+    
+    .loginBody .register-container {
+        width: 100%;
+        padding: 30px;
+    }
+    
+    .loginBody .register-container h2 {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    
+    .loginBody .register-container input {
+        padding: 12px 14px;
+        font-size: 14px;
+        margin-bottom: 14px;
+        border-radius: 12px;
+    }
+    
+    .loginBody .btnLogin {
+        padding: 12px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+}
+
+/* Small Mobile (max 480px) */
+@media (max-width: 480px) {
+    .loginBody .register-wrapper {
+        width: 94%;
+        margin: 40px auto;
+        border-radius: 20px;
+    }
+    
+    .loginBody .login-image {
+        min-height: 160px;
+        height: 160px;
+    }
+    
+    .loginBody .register-container {
+        padding: 24px;
+    }
+    
+    .loginBody .register-container h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .loginBody .register-container input {
+        padding: 10px 12px;
+        font-size: 13px;
+        margin-bottom: 12px;
+        border-radius: 10px;
+    }
+    
+    .loginBody .btnLogin {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    
+    .loginBody .register-container p {
+        font-size: 13px;
+        margin-top: 16px;
+    }
+}
+
+/* Large Screens (min 1400px) */
+@media (min-width: 1400px) {
+    .loginBody .register-wrapper {
+        max-width: 1100px;
+        min-height: 520px;
+    }
+    
+    .loginBody .login-image {
+        min-height: 520px;
+    }
+    
+    .loginBody .register-container {
+        padding: 55px;
+    }
+    
+    .loginBody .register-container h2 {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+    
+    .loginBody .register-container input {
+        padding: 16px 18px;
+        font-size: 16px;
+        margin-bottom: 18px;
+        border-radius: 16px;
+    }
+    
+    .loginBody .btnLogin {
+        padding: 16px;
+        font-size: 17px;
+        border-radius: 16px;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loginBody .register-wrapper {
+    animation: fadeInUp 0.5s ease-out;
+}
