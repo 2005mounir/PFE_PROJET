@@ -257,7 +257,7 @@ form.addEventListener('submit', function(e) {
         if (data.status === 'success') {
             // Case A: everything was successfully saved to the database
             alert(data.message); 
-            window.location.href = 'dashboard.php';// Direct redirect to the dashboard
+            window.location.href = 'index.php';// Direct redirect to the dashboard
              } else {
            // Case B: there is an issue returned by the server
             if (data.type === 'validation') {

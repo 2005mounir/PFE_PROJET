@@ -49,35 +49,36 @@ class AdminDashboard {
     }
 
 
-//Calculate the total number of unread messages
-public function getUnreadMessages() {
-    $query = "SELECT COUNT(*) as total FROM messages WHERE status = 'unread'";
-    $stmt = $this->db->prepare($query);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result['total'] ?? 0;
-}
-
-
-//Calculate the total number of banned users
-    public function blockedUsers() {
-        $query = "SELECT COUNT(*) as total FROM users WHERE status = 'blocked'";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result['total'] ?? 0;
+    //Calculate the total number of unread messages
+    public function getUnreadMessages() {
+            $query = "SELECT COUNT(*) as total FROM messages WHERE status = 'unread'";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['total'] ?? 0;
     }
 
 
-// Calculate the number of rejected properties
-    public function getRejectedProperties() {
-        $query = "SELECT COUNT(*) as total FROM properties WHERE status = 'rejected'";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result['total'] ?? 0;
+    //Calculate the total number of banned users
+        public function blockedUsers() {
+            $query = "SELECT COUNT(*) as total FROM users WHERE status = 'blocked'";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['total'] ?? 0;
+        }
+
+
+
+    // Calculate the number of rejected properties
+        public function getRejectedProperties() {
+            $query = "SELECT COUNT(*) as total FROM properties WHERE status = 'rejected'";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['total'] ?? 0;
+        }
     }
-}
 
 
 ?>

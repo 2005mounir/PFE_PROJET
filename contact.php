@@ -1,3 +1,83 @@
+
+
+<?php
+
+require_once 'config.php'; // get pdo and session
+require_once 'classes/ContactManager.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // 1. verefy CSRF Token
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Security Error: Invalid Token.");
+    }
+
+    $errors = [];
+    $data = [];
+
+    //(Validation & Sanitization)
+    
+    //validation name
+    $name = trim($_POST['name']);
+    if (empty($name) || strlen($name) < 3) {
+        $errors['name'] = "Name must be at least 3 characters.";
+    } else {
+        $data['name'] = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+    }
+
+   //validation email
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Invalid email format.";
+    } else {
+        $data['email'] = $email;
+    }
+
+//validation email
+    $subject = trim($_POST['subject']);
+    if (empty($subject)) {
+        $errors['subject'] = "Subject is required.";
+    } else {
+        $data['subject'] = htmlspecialchars($subject, ENT_QUOTES, 'UTF-8');
+    }
+
+    // validation subject;
+    $message = trim($_POST['message']);
+    if (empty($message) || strlen($message) < 10) {
+        $errors['message'] = "Message must be at least 10 characters.";
+    } else {
+        $data['message'] = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+    }
+
+    //check if erreurs is not emty
+    if (!empty($errors)) {
+        $_SESSION['errors'] = $errors;
+        $_SESSION['old_input'] = $_POST; 
+        header("Location: contact.php");
+        exit();
+    }
+
+    //  send data to database  using ContactManager
+    if (empty($errors)){
+    $contact = new ContactManager($pdo);
+    if ($contact->sendMessage($data['name'], $data['email'], $data['subject'], $data['message'])) {
+        $_SESSION['success'] = "Message sent successfully!";
+        header("Location: contact.php");
+        exit();
+    } else {
+        $_SESSION['errors'] = $errors;
+        $_SESSION['old_input'] = $_POST;
+    }
+} 
+}
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,27 +106,50 @@ require_once 'includes/header.php';
 
     <div class="contact-grid">
         
+<?php if (isset($_SESSION['success'])): ?>
+                <div style="background: green; color: white; padding: 10px; margin-bottom: 10px;">
+                    <?php echo $_SESSION['success']; ?>
+                </div>
+                 <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>
+        </div>
+
         <div class="contact-form-side">
-            <form action="send_message.php" method="POST" class="contact-form">
+            <form action="contact.php" method="POST" class="contact-form">
                 
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">   
+
                 <div class="form-group">
                     <label for="name" class='contactlable'>Name</label>
-                    <input type="text" id="name" name="name" placeholder="Name" required>
+                    <input type="text" id="name" name="name" value="<?php echo $_SESSION['old_input']['name'] ?? ''; ?>"  placeholder="Name..." >
+                    <div style="color: red; font-size: 0.8em; margin-top: 5px;">
+                           <?php echo $_SESSION['errors']['name'] ?? ''; ?>
+                     </div>
                 </div>
+
 
                 <div class="form-group">
                     <label for="email" class='contactlable'>Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="email" id="email" name="email" value="<?php echo $_SESSION['old_input']['email'] ?? ''; ?>"  placeholder="Email...">
+                     <div style="color: red; font-size: 0.8em; margin-top: 5px;">
+                           <?php echo $_SESSION['errors']['email'] ?? ''; ?>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="subject" class='contactlable'>Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    <input type="text" id="subject" name="subject" value="<?php echo $_SESSION['old_input']['subject'] ?? ''; ?>"  placeholder="Subject..." >
+                     <div style="color: red; font-size: 0.8em; margin-top: 5px;">
+                          <?php echo $_SESSION['errors']['subject'] ?? ''; ?>
+                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="message" class='contactlable'>Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+                    <textarea id="message" name="message" rows="5" placeholder="Message..."><?php echo $_SESSION['old_input']['message'] ?? ''; ?></textarea>
+                     <div style="color: red; font-size: 0.8em; margin-top: 5px;">
+                        <?php echo $_SESSION['errors']['message'] ?? ''; ?>
+                    </div>
                 </div>
 
                 <button type="submit" name="submit_message" class="btn-submit-msg">
@@ -54,7 +157,13 @@ require_once 'includes/header.php';
                 </button>
                 
             </form>
-        </div>
+            <?php
+                unset($_SESSION['errors']);
+                unset($_SESSION['old_input']);
+            ?>
+
+
+
 
         <div class="contact-info-sidebar">
             

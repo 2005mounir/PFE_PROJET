@@ -9,9 +9,8 @@ header("X-XSS-Protection: 1; mode=block");
 
 
 
-// 2.  SESSION COOKIE CONFIGURATION
 
-// Note: This function must be executed before session_start() to take effect
+//This function must be executed before session_start() to take effect
 session_set_cookie_params([
     'lifetime' => 0,               // Session cookie expires when the browser is closed
     'path'     => '/',
@@ -22,7 +21,7 @@ session_set_cookie_params([
 
 
 
-// 3. 🏁 SESSION INITIALIZATION
+// session initialization
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -30,8 +29,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 
-// 4.  INACTIVITY SESSION TIMEOUT
-
+// inacivity session timout
 $timeout_duration = 1800; // 30 minutes of inactivity
 
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout_duration)) {
@@ -48,15 +46,13 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 
 
-// 5. CSRF TOKEN AUTO GENERATION
-
+// csrf token auto generation
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
 
-
-// 6. DATABASE CONNECTION
+//database connection
 require_once 'classes/Database.php';
 
 try {
@@ -71,7 +67,7 @@ try {
 
 
 
-//  CENTRALIZED AUTHENTICATION CHECKER
+//centralized authentication checker
 function check_auth() {
     if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
         
