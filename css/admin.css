@@ -308,30 +308,44 @@ body {
     background-color: #ffedd5;
  }
 
+/*stuyle of button */
+.btn-icon {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+
+.btn-icon:first-child {
+    color: #28a745; 
+    background: #e9f7ef;
+}
+
+
 .btn-delete {
-     background: #fef2f2; 
-     color: #dc2626; 
-     border: 1px solid #fee2e2; 
-}
-.btn-delete:hover { 
-    background-color: #fee2e2;
- }
-
-.btn-read { 
-    background: #eff6ff;
-     color: #2563eb; 
-     border: 1px solid #dbeafe;
-}
-.btn-read:hover {
-    background-color: #dbeafe; 
+    color: #dc3545; 
+    background: #fdf2f2;
 }
 
-.btn:hover { 
-    transform: translateY(-1px);
- }
+.btn-icon:hover {
+    background: #e2e6ea;
+}
 
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: sans-serif;
+}
 
-
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
 
 /*responsive admin dashbord*/
 

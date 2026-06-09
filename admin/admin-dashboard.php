@@ -21,8 +21,10 @@ $pendingProps     = $dashboard->getPendingProperties();
 $unreadMessages   = $dashboard->getUnreadMessages();
 $bannedUsers      = $dashboard->blockedUsers();
 $rejectedProps    = $dashboard->getRejectedProperties();
-
+$recentUnread     =$dashboard->getUnreadRecentMessages();
 ?>
+
+
 
 
 <div class="content-body">
@@ -149,7 +151,18 @@ $rejectedProps    = $dashboard->getRejectedProperties();
                 <a href="admin-messages.php" class="view-all-btn">View All</a>
             </div>
             <div class="table-responsive">
-                <table class="mini-table">
+
+
+       <!-- deleted message-->
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success">
+                <?php echo $_SESSION['success']; ?>
+            </div>
+            <?php unset($_SESSION['success']); ?>
+        <?php endif; ?>
+
+
+                        <table class="mini-table">
                     <thead>
                         <tr>
                             <th>Sender</th>
@@ -157,22 +170,46 @@ $rejectedProps    = $dashboard->getRejectedProperties();
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <span class="badge bg-red"></span>
-                            </td>
-                            <td>
-                                <a href="view-message.php" class="btn btn-read">Read</a>
-                                
-                                <a href="deleteMessage.php" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+              </thead>
+                      <tbody>
+                                <?php if (empty($recentUnread)): ?>
+                                    <tr><td colspan="4" style="text-align:center;">No new unread messages.</td></tr>
+                                <?php else: ?>
+                                    <?php foreach ($recentUnread as $msg): ?>
+                                        <tr>
+                                            <td><?php echo htmlspecialchars($msg['name']); ?></td>
+                                            
+                                            <td>
+                                                <?php echo htmlspecialchars(mb_strimwidth($msg['subject'], 0, 23,"...")); ?>
+                                            </td>
+                                            
+                                            <td>
+                                                <?php 
+                                                $isRead = ($msg['status'] === 'read');
+                                                $colorClass = $isRead ? 'green' : 'bg-red';
+                                                ?>
+                                                <span class="badge <?php echo $colorClass; ?>">
+                                                    <?php echo ucfirst(htmlspecialchars($msg['status'])); ?>
+                                                </span>
+                                            </td>
+                                            
+                                           <td>
+                                                <a href="setReadMessages.php?id=<?php echo $msg['id_message']; ?>" class="btn-icon" title="Mark as Read">
+                                                    <i class="fa-solid fa-check"></i>
+                                                </a>
+                                                
+                                                <a href="deleteMessages.php?id=<?php echo $msg['id_message']; ?>" 
+                                                        class="btn-icon btn-delete" 
+                                                          title="Delete"
+                                                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">
+                                                <i class="fa-solid fa-trash"></i>
+                                                </a>
+                                          </td>
+                                     </tr>
+                                  <?php endforeach; ?>
+                             <?php endif; ?>
+                </tbody>
+            </table>
             </div>
         </div>
 

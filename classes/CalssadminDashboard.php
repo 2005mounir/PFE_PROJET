@@ -78,7 +78,22 @@ class AdminDashboard {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result['total'] ?? 0;
         }
-    }
+
+
+
+     //get last 5 messages
+       public function getUnreadRecentMessages() {
+              $query = "SELECT * FROM messages WHERE status = 'unread' ORDER BY created_at DESC LIMIT 5";
+              $stmt = $this->db->prepare($query);
+              $stmt->execute();
+               return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+ }
+
+
+
+
 
 
 ?>
