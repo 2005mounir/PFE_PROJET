@@ -50,8 +50,8 @@ class AdminDashboard {
 
 
     //Calculate the total number of unread messages
-    public function getUnreadMessages() {
-            $query = "SELECT COUNT(*) as total FROM messages WHERE status = 'unread'";
+    public function getTotaleMessages() {
+            $query = "SELECT COUNT(*) as total FROM messages ";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -89,7 +89,28 @@ class AdminDashboard {
                return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
- }
+
+
+      //get total unread messages 
+        public function getUnreadMessagesCount() {
+                $query = "SELECT COUNT(*) as total FROM messages WHERE status = :status";
+                $stmt = $this->db->prepare($query);
+                $stmt->execute(['status' => 'unread']);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);        
+                return $result['total'] ?? 0;
+        }
+
+
+
+      // Retrieve all messages for the table, ordered by date (newest to oldest)
+        public function getAllMessages() {
+            $query = "SELECT * FROM messages ORDER BY created_at DESC";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+}
 
 
 

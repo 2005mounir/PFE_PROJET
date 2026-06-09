@@ -18,10 +18,11 @@ $totalUsers       = $dashboard->getTotalUsers();
 $totalProperties  = $dashboard->getTotalProperties(); 
 $approvedProps    = $dashboard->getApprovedProperties();
 $pendingProps     = $dashboard->getPendingProperties();
-$unreadMessages   = $dashboard->getUnreadMessages();
+$getTotaleMessages = $dashboard->getTotaleMessages();
 $bannedUsers      = $dashboard->blockedUsers();
 $rejectedProps    = $dashboard->getRejectedProperties();
-$recentUnread     =$dashboard->getUnreadRecentMessages();
+$recentUnread     = $dashboard->getUnreadRecentMessages();
+$tottalUnreadMessages = $dashboard-> getUnreadMessagesCount();
 ?>
 
 
@@ -39,6 +40,19 @@ $recentUnread     =$dashboard->getUnreadRecentMessages();
                 <span class="card-sub">Registered accounts</span>
             </div>
         </div>
+
+
+
+        <div class="stat-card card-banned">
+            <div class="card-icon"><i class="fa-solid fa-user-slash"></i></div>
+            <div class="card-info">
+                <h3><?= htmlspecialchars($bannedUsers) ?></h3>
+                <p>Blocked Users</p>
+                <span class="card-sub">Restricted accounts</span>
+            </div>
+        </div>
+
+
 
         <div class="stat-card card-purple">
             <div class="card-icon"><i class="fa-solid fa-building"></i></div>
@@ -58,6 +72,15 @@ $recentUnread     =$dashboard->getUnreadRecentMessages();
             </div>
         </div>
 
+       <div class="stat-card card-rejected">
+            <div class="card-icon"><i class="fa-solid fa-house-circle-xmark"></i></div>
+            <div class="card-info">
+                <h3><?= htmlspecialchars($rejectedProps) ?></h3>
+                <p>Rejected Houses</p>
+                <span class="card-sub">Non-approved listings</span>
+            </div>
+        </div>
+
         <div class="stat-card card-orange">
             <div class="card-icon"><i class="fa-solid fa-hourglass-half"></i></div>
             <div class="card-info">
@@ -70,29 +93,22 @@ $recentUnread     =$dashboard->getUnreadRecentMessages();
         <div class="stat-card card-red">
             <div class="card-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
             <div class="card-info">
-                <h3><?= htmlspecialchars($unreadMessages) ?></h3>
-                <p>New Messages</p>
-                <span class="card-sub">Unread tickets</span>
+                <h3><?= htmlspecialchars($getTotaleMessages) ?></h3>
+                <p>Total messages</p>
+                <span class="card-sub">All messages</span>
             </div>
         </div>
 
-        <div class="stat-card card-banned">
-            <div class="card-icon"><i class="fa-solid fa-user-slash"></i></div>
+        <div class="stat-card card-unread">
+            <div class="card-icon"><i class="fa-solid fa-envelope"></i></div>
             <div class="card-info">
-                <h3><?= htmlspecialchars($bannedUsers) ?></h3>
-                <p>Blocked Users</p>
-                <span class="card-sub">Restricted accounts</span>
+                <h3><?= htmlspecialchars($tottalUnreadMessages) ?></h3>
+                <p>Unread Messages</p>
+                <span class="card-sub">New tickets to review</span>
             </div>
         </div>
 
-        <div class="stat-card card-rejected">
-            <div class="card-icon"><i class="fa-solid fa-house-circle-xmark"></i></div>
-            <div class="card-info">
-                <h3><?= htmlspecialchars($rejectedProps) ?></h3>
-                <p>Rejected Houses</p>
-                <span class="card-sub">Non-approved listings</span>
-            </div>
-        </div>
+       
         
     </div>
      <div class="dashboard-section">
