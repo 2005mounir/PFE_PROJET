@@ -31,6 +31,7 @@ $bannedUsers      = $dashboard->blockedUsers();
 $rejectedProps    = $dashboard->getRejectedProperties();
 $recentUnread     = $dashboard->getUnreadRecentMessages();
 $tottalUnreadMessages = $dashboard-> getUnreadMessagesCount();
+$recentUsers = $dashboard->getRecentUsers(5);
 ?>
 
 
@@ -137,13 +138,33 @@ $tottalUnreadMessages = $dashboard-> getUnreadMessagesCount();
     </div>
 
     <div class="tables-dual-grid">
-        
         <div class="dashboard-section">
             <div class="section-header">
                 <h2><i class="fa-solid fa-users icon-recent-users"></i> Recent Users</h2>
                 <a href="admin-users.php" class="view-all-btn">View All</a>
             </div>
             <div class="table-responsive">
+
+
+
+                   <!-- show message succsses pe erreur here  -->
+                    <?php if (isset($_SESSION['user_success'])): ?>
+                        <div class="alert-success">
+                            <?= $_SESSION['user_success']; ?>
+                        </div>
+                       <?php unset($_SESSION['user_success']); ?>
+                 <?php endif; ?>
+
+                <?php if (isset($_SESSION['user_error'])): ?>
+                        <div class="alert-error">
+                            <?= $_SESSION['user_error']; ?>
+                        </div>
+                        <?php unset($_SESSION['user_error']); ?>
+                <?php endif; ?>
+
+
+
+
                 <table class="mini-table">
                     <thead>
                         <tr>
@@ -154,25 +175,29 @@ $tottalUnreadMessages = $dashboard-> getUnreadMessagesCount();
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <span class="badge"></span>
-                            </td>
-                            <td>
-                                <button class="btn btn-ban">Ban</button>
-                                <button class="btn btn-delete">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
+                        <?php foreach ($recentUsers as $user): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($user['name']); ?></td>
+                                <td><?= htmlspecialchars($user['role']); ?></td>
+                                <td>
+                                    <span class="badge <?= ($user['status'] == 'active') ? 'badge-success' : 'badge-danger'; ?>">
+                                        <?= $user['status']; ?>
+                                    </span>
+                                </td>
+                                <td>
+                                     <a href="deleteUser.php?id=<?= $user['id_user']; ?>" class="btn btn-delete">Delete</a>
+                                    <a href="blockUser.php?id=<?= $user['id_user']; ?>" class="btn btn-ban">Block</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                 </tbody>
                 </table>
             </div>
         </div>
 <div class="dashboard-section">
             <div class="section-header">
                 <h2><i class="fa-solid fa-envelope-open-text icon-recent-messages"></i> Recent Messages</h2>
-                <a href="crudMessages.php" class="view-all-btn">View All</a>
+                <a href="managmentMessages.php" class="view-all-btn">View All</a>
             </div>
             <div class="table-responsive">
 
@@ -218,16 +243,18 @@ $tottalUnreadMessages = $dashboard-> getUnreadMessagesCount();
                                             </td>
                                             
                                            <td>
-                                                <a href="setReadMessages.php?id=<?php echo $msg['id_message']; ?>" class="btn-icon" title="Mark as Read">
-                                                        <i class="fas fa-check-circle"></i>
+
+                                                <a href="setReadMessages.php?id=<?php echo $msg['id_message']; ?>" class="  btn btn-icon" title="Mark as Read">
+                                                       Read
                                                 </a>
-                                                
+                                        
+
                                                 <a href="deleteMessages.php?id=<?php echo $msg['id_message']; ?>" 
-                                                        class="btn-icon btn-delete" 
+                                                         class="btn btn-delete" 
                                                           title="Delete"
                                                         onclick="return confirm('are you sure to delete this message ?');">
-                                                <i class="fa-solid fa-trash"></i>
-                                                </a>
+                                                     Delete
+                                                 </a> 
                                           </td>
                                      </tr>
                                   <?php endforeach; ?>

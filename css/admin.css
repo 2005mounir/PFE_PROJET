@@ -345,10 +345,9 @@ body {
     transition: all 0.2s; 
 }
 .btn-ban {
-     background: #fff7ed;
      color: #ea580c;
-     border: 1px solid #ffedd5;
      margin-right: 5px;
+     text-decoration: none;
  }
 .btn-ban:hover {
     background-color: #ffedd5;
@@ -365,13 +364,15 @@ body {
 
 
 .btn-icon:first-child {
-    color:  #2563eb;; 
+    color:rgb(30, 225, 30);
+    
    
 }
 
 
 .btn-delete {
     color:  #2563eb; 
+    text-decoration: none;
    
 }
 
@@ -387,14 +388,67 @@ body {
     font-family: sans-serif;
 }
 
-.alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
+
+
+
+
+
+/* Container for alerts */
+.alert-container {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-/*responsive admin dashbord*/
+/* Base style for all alerts */
+.alert-success, .alert-error {
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
 
+/* Success Alert Styles */
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;            
+    border-color: #a7f3d0;
+}
+
+/* Error Alert Styles */
+.alert-error {
+    background-color: #fee2e2; 
+    color: #991b1b;            
+    border-color: #fecaca;
+}
+
+.alert-success::before {
+    content: "✓ ";
+    margin: 10px;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.alert-error::before {
+    content: "⚠ ";
+    margin: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+/*responsive admin dashbord*/
 @media (max-width: 1024px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);  
@@ -579,7 +633,12 @@ body {
 .btn-action:hover {
     transform: scale(1.2);
 }
-
+.btn-read:hover{
+    color: greenyellow;
+}
+.btn-unread:hover{
+    color: #1e293b;
+}
 .btn-delete:hover {
     color: #dc2626;
 }

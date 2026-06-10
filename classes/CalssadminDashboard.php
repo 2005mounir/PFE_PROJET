@@ -10,7 +10,7 @@ class AdminDashboard {
         $this->db = $dbConnection;
     }
 
-//Calculate the total number of registered users
+    //Calculate the total number of registered users
     public function getTotalUsers() {
         $query = "SELECT COUNT(*) as total FROM users";
         $stmt = $this->db->prepare($query);
@@ -20,7 +20,7 @@ class AdminDashboard {
     }
 
 
-// Calculate the total number of properties in the system
+    // Calculate the total number of properties in the system
     public function getTotalProperties() {
         $query = "SELECT COUNT(*) as total FROM properties";
         $stmt = $this->db->prepare($query);
@@ -30,7 +30,7 @@ class AdminDashboard {
     }
 
 
-// Calculate the total number of approved (active) properties
+    // Calculate the total number of approved (active) properties
     public function getApprovedProperties() {
         $query = "SELECT COUNT(*) as total FROM properties WHERE status = 'approved'";
         $stmt = $this->db->prepare($query);
@@ -39,14 +39,14 @@ class AdminDashboard {
         return $result['total'] ?? 0;
     }
 
-//  Calculate the total number of pending properties awaiting review
+    //  Calculate the total number of pending properties awaiting review
     public function getPendingProperties() {
         $query = "SELECT COUNT(*) as total FROM properties WHERE status = 'pending'";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] ?? 0;
-    }
+      }
 
 
     //Calculate the total number of unread messages
@@ -56,7 +56,7 @@ class AdminDashboard {
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result['total'] ?? 0;
-    }
+       }
 
 
     //Calculate the total number of banned users
@@ -111,10 +111,13 @@ class AdminDashboard {
         }
 
 
-        public function updateMessageStatus($id, $status) {
-            $stmt = $this->pdo->prepare("UPDATE messages SET status = ? WHERE id_message = ?");
-            $stmt->execute([$status, $id]);
-    }
+          //method get last 5 users;
+          public function getRecentUsers($limit = 5) {
+              $stmt = $this->db->prepare("SELECT * FROM users ORDER BY id_user DESC LIMIT :limit");
+              $stmt->execute(['limit' => (int)$limit]);
+              return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+
 
 }
 

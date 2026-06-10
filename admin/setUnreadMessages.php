@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
     } catch (PDOException $e) {
 
         // storage erreurs in file errurs.log
-        $errorPath = __DIR__ . '/../errors/erreurs.log';
+        $errorPath = __DIR__ . '/../erreurs/erreurs.log';
         $errorMessage = "[" . date('Y-m-d H:i:s') . "] " . $e->getMessage() . PHP_EOL;
         file_put_contents($errorPath, $errorMessage, FILE_APPEND);
         

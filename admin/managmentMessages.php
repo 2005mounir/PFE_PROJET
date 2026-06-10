@@ -64,11 +64,11 @@ include 'includes/sidebar.php';
            
              <td td class="data-label" data-label="Actions">
               <div class="actions-wrapper">
-                    <a href="setReadMessages.php?id=<?= $msg['id_message'] ?>" class="btn-action">
+                    <a href="setReadMessages.php?id=<?= $msg['id_message'] ?>" class=" btn-read btn-action">
                         <i class="fas fa-check-circle"></i>
                     </a>
                     
-                    <a href="setUnreadMessages.php?id=<?= $msg['id_message'] ?>" class="btn-action">
+                    <a href="setUnreadMessages.php?id=<?= $msg['id_message'] ?>" class=" btn-unread btn-action">
                         <i class="fas fa-envelope-open"></i>
                     </a>
                     
