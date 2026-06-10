@@ -28,6 +28,14 @@ include 'includes/sidebar.php';
         </div>
         <?php unset($_SESSION['user_success']); ?>
    <?php endif; ?>
+   
+      <?php if (isset($_SESSION['user_error'])): ?>
+                        <div class="alert-error">
+                            <?= $_SESSION['user_error']; ?>
+                        </div>
+                        <?php unset($_SESSION['user_error']); ?>
+    <?php endif; ?>
+
 
    <div class="table-responsive">
     <table class="users-management-table">
