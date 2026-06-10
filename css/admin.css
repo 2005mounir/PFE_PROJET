@@ -307,10 +307,13 @@ body {
 }
 
 .mini-table td { 
-    padding: 14px; 
+    padding: 15px; 
     border-bottom: 1px solid #f1f5f9; 
     color: #475569; 
     vertical-align: middle; 
+}
+.table-users td{
+   padding: 22px;
 }
 
 .mini-table tr:hover td {

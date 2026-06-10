@@ -141,7 +141,7 @@ $recentUsers = $dashboard->getRecentUsers(5);
         <div class="dashboard-section">
             <div class="section-header">
                 <h2><i class="fa-solid fa-users icon-recent-users"></i> Recent Users</h2>
-                <a href="admin-users.php" class="view-all-btn">View All</a>
+                <a href="managmentUsers.php" class="view-all-btn">View All</a>
             </div>
             <div class="table-responsive">
 
@@ -165,7 +165,7 @@ $recentUsers = $dashboard->getRecentUsers(5);
 
 
 
-                <table class="mini-table">
+                <table class=" table-users mini-table">
                     <thead>
                         <tr>
                             <th>Name</th>
