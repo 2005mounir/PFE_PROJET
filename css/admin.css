@@ -654,19 +654,30 @@ body {
 /*=======================================
     code css managmentUsers.php
 ========================================*/
+/* ===== Users Management — matching crudMessages style ===== */
 
-/*Container */
 .users-management-container {
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.users-management-container h2 {
+    color: var(--header-bg);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.table-container {
     background: #ffffff;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--border-color); 
+    border: 1px solid var(--border-color);
     overflow-x: auto;
     margin: 20px 0;
 }
 
-/* Table */
 .users-management-table {
     width: 100%;
     border-collapse: collapse;
@@ -674,7 +685,8 @@ body {
 }
 
 .users-management-table thead {
-    background-color: var(--header-bg); }
+    background-color: var(--header-bg);
+}
 
 .users-management-table thead th {
     color: #ffffff;
@@ -694,53 +706,54 @@ body {
     text-align: center;
 }
 
+.users-management-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
 .users-management-table tbody tr:hover {
     background-color: #f1f5f9;
 }
 
-/* Badges*/
+/* ===== Badges ===== */
 .um-badge {
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
 }
-.um-bg-success {
-     background: #d1fae5;
-      color: #065f46;
- } 
-.um-bg-danger { 
-   background: #fee2e2;
-    color: #991b1b; }  
 
-/* buttons (Actions) */
+.um-bg-success { background: #d1fae5; color: #065f46; }
+.um-bg-danger  { background: #fee2e2; color: #991b1b; }
+
+/* ===== Action Buttons ===== */
+.actions-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+}
+
 .um-btn-action {
     color: var(--primary-blue);
     font-size: 1.1rem;
-    padding: 4px 8px;
+    padding: 4px;
     transition: all 0.2s ease;
     text-decoration: none;
-    display: inline-block;
 }
 
-.um-btn-action:hover {
-    transform: scale(1.2);
+.um-btn-action:hover         { transform: scale(1.2); }
+.um-btn-action.btn-block:hover   { color: #f59e0b; }
+.um-btn-action.btn-unblock:hover { color: #065f46; }
+.um-btn-action.btn-role:hover    { color: #7c3aed; }
+.um-btn-delete:hover             { color: #dc2626; }
+
+/* ===== Alert ===== */
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    margin-bottom: 16px;
 }
-
-/*hover color*/
-.um-btn-action[title="Block"]:hover {
-     color: #f59e0b; 
-}     
-.um-btn-action[title="Unblock"]:hover {
-     color: #10b981; 
-}  
-.um-btn-action[title="change role to admin"]:hover {
-     color: #8b5cf6;
- } 
-.um-btn-delete:hover {
-     color: #dc2626; 
-}                
-
-/*=======================================
-   end  code css managmentUsers.php
-========================================*/

@@ -185,7 +185,7 @@ $recentUsers = $dashboard->getRecentUsers(5);
                                     </span>
                                 </td>
                                 <td>
-                                     <a href="deleteUser.php?id=<?= $user['id_user']; ?>" class="btn btn-delete">Delete</a>
+                                     <a href="deleteUser.php?id=<?= $user['id_user']; ?>" class="btn btn-delete" onclick="return confirm('are you sure to delete this user ?')">Delete</a>
                                     <a href="blockUser.php?id=<?= $user['id_user']; ?>" class="btn btn-ban">Block</a>
                                 </td>
                             </tr>
