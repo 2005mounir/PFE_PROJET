@@ -110,6 +110,12 @@ class AdminDashboard {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+
+        public function updateMessageStatus($id, $status) {
+            $stmt = $this->pdo->prepare("UPDATE messages SET status = ? WHERE id_message = ?");
+            $stmt->execute([$status, $id]);
+    }
+
 }
 
 

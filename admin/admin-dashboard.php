@@ -1,5 +1,7 @@
 <?php
-// 1. Include security gates and layout components
+  session_start();
+
+// Include security gates and layout components
 include 'includes/header.php';
 include 'includes/sidebar.php';
 
@@ -7,6 +9,12 @@ include 'includes/sidebar.php';
 
 require_once '../classes/database.php';        
 require_once '../classes/CalssadminDashboard.php';
+
+//check if ueser is admin;
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
 $connect = new Database();
 $pdo = $connect->connect();
@@ -164,7 +172,7 @@ $tottalUnreadMessages = $dashboard-> getUnreadMessagesCount();
 <div class="dashboard-section">
             <div class="section-header">
                 <h2><i class="fa-solid fa-envelope-open-text icon-recent-messages"></i> Recent Messages</h2>
-                <a href="admin-messages.php" class="view-all-btn">View All</a>
+                <a href="crudMessages.php" class="view-all-btn">View All</a>
             </div>
             <div class="table-responsive">
 
@@ -202,22 +210,22 @@ $tottalUnreadMessages = $dashboard-> getUnreadMessagesCount();
                                             <td>
                                                 <?php 
                                                 $isRead = ($msg['status'] === 'read');
-                                                $colorClass = $isRead ? 'green' : 'bg-red';
+                                                $colorClass = $isRead ? 'green' : 'badge-unread';
                                                 ?>
-                                                <span class="badge <?php echo $colorClass; ?>">
+                                                <span class="badge  <?php echo $colorClass; ?>">
                                                     <?php echo ucfirst(htmlspecialchars($msg['status'])); ?>
                                                 </span>
                                             </td>
                                             
                                            <td>
                                                 <a href="setReadMessages.php?id=<?php echo $msg['id_message']; ?>" class="btn-icon" title="Mark as Read">
-                                                    <i class="fa-solid fa-check"></i>
+                                                        <i class="fas fa-check-circle"></i>
                                                 </a>
                                                 
                                                 <a href="deleteMessages.php?id=<?php echo $msg['id_message']; ?>" 
                                                         class="btn-icon btn-delete" 
                                                           title="Delete"
-                                                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">
+                                                        onclick="return confirm('are you sure to delete this message ?');">
                                                 <i class="fa-solid fa-trash"></i>
                                                 </a>
                                           </td>

@@ -21,6 +21,13 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
         </a>
         </li>
 
+
+        <li>
+            <a href="../index.php">
+                home
+            </a>
+        </li>
+
         <li>
           <a href="admin-houses.php">
            <i class="fa-solid fa-building-user"></i>    
@@ -36,7 +43,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
         </li>
 
         <li>
-            <a href="admin-messages.php">
+            <a href="managmentMessages.php">
                   <i class="fa-solid fa-inbox"></i>
                  Support Center
             </a>
