@@ -36,7 +36,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
       </li>
 
         <li>
-            <a href="admin-users.php">
+            <a href="managmentUsers.php">
                 <i class="fa-solid fa-users-gear"></i>
                  Manage Users
             </a>

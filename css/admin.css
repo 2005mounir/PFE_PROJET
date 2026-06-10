@@ -145,10 +145,6 @@ body {
 }
 
 
-
-
-
-
 .card-unread {
     background: #fff;
     border-top: 4px solid #e74c3c;
@@ -517,8 +513,6 @@ body {
 }
 
 
-
-
 /*==========================================================================
      end code css of admin dashbord
    ========================================================================== */
@@ -601,7 +595,7 @@ body {
     border-bottom: 1px solid var(--border-color);
     font-size: 0.9rem;
     vertical-align: middle;
-    
+   text-align: center;
 }
 
 .table tbody tr:hover {
@@ -621,11 +615,13 @@ body {
 .badge-read { background: #d1fae5; color: #065f46; }
 
 /* Action Buttons */
-.actions-wrapper {
+
+   .actions-wrapper {
     display: flex;
-    flex-direction: column;        
-    align-items: center;           
-    gap: 8px;                      
+    flex-direction: row; 
+    justify-content: center;
+    gap: 12px;
+                     
 }
 .btn-action {
     color: var(--primary-blue);
@@ -646,3 +642,105 @@ body {
     color: #dc2626;
 }
 
+
+/*=======================================
+    end code css managmentMessages.php
+========================================*/
+
+
+
+
+
+/*=======================================
+    code css managmentUsers.php
+========================================*/
+
+/*Container */
+.users-management-container {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color); 
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+/* Table */
+.users-management-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.users-management-table thead {
+    background-color: var(--header-bg); }
+
+.users-management-table thead th {
+    color: #ffffff;
+    padding: 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+
+.users-management-table tbody td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.users-management-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* Badges*/
+.um-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.um-bg-success {
+     background: #d1fae5;
+      color: #065f46;
+ } 
+.um-bg-danger { 
+   background: #fee2e2;
+    color: #991b1b; }  
+
+/* buttons (Actions) */
+.um-btn-action {
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+    padding: 4px 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.um-btn-action:hover {
+    transform: scale(1.2);
+}
+
+/*hover color*/
+.um-btn-action[title="Block"]:hover {
+     color: #f59e0b; 
+}     
+.um-btn-action[title="Unblock"]:hover {
+     color: #10b981; 
+}  
+.um-btn-action[title="change role to admin"]:hover {
+     color: #8b5cf6;
+ } 
+.um-btn-delete:hover {
+     color: #dc2626; 
+}                
+
+/*=======================================
+   end  code css managmentUsers.php
+========================================*/

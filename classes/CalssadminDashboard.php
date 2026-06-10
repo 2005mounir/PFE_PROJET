@@ -8,7 +8,7 @@ class AdminDashboard {
     //this function works authotamiqully where we use this class;
     public function __construct($dbConnection) {
         $this->db = $dbConnection;
-    }
+     }
 
     //Calculate the total number of registered users
     public function getTotalUsers() {
@@ -17,7 +17,7 @@ class AdminDashboard {
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] ?? 0;
-    }
+     }
 
 
     // Calculate the total number of properties in the system
@@ -27,7 +27,7 @@ class AdminDashboard {
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] ?? 0;
-    }
+      }
 
 
     // Calculate the total number of approved (active) properties
@@ -118,6 +118,12 @@ class AdminDashboard {
               return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
+         //method get all users f
+            public function getAllUsers() {
+                $stmt = $this->db->prepare("SELECT * FROM users ORDER BY id_user DESC");
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
 
 }
 
