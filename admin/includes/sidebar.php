@@ -29,7 +29,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
         </li>
 
         <li>
-          <a href="admin-houses.php">
+          <a href="managmentProperties.php">
            <i class="fa-solid fa-building-user"></i>    
               Manage Properties
          </a>

@@ -125,6 +125,28 @@ class AdminDashboard {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
+        //method get all properties with details from database
+       public function getAllPropertiesWithDetails() {
+            $sql = "SELECT 
+                        properties.*, 
+                        users.name AS owner_name, 
+                        users.email AS owner_email,
+                        cities.city_name AS city_name,
+                        countries.country_name AS country_name,
+                        MIN(images.image_path) AS first_image
+                    FROM properties
+                    JOIN users ON properties.id_user = users.id_user
+                    JOIN cities ON properties.id_city = cities.id_city
+                    JOIN countries ON properties.id_country = countries.id_country
+                    LEFT JOIN images ON properties.id_property = images.id_property
+                    GROUP BY properties.id_property
+                    ORDER BY properties.created_at DESC";
+            
+            $stmt = $this->db->query($sql);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 }
 
 

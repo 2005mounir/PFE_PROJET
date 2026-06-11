@@ -79,7 +79,7 @@ include 'includes/sidebar.php';
                                 </a>
                             <?php endif; ?>
 
-                            <a href="toggleRole.php?id=<?= $user['id_user']; ?>" class="um-btn-action" title="change role to admin">
+                            <a href="setRole.php?id=<?= $user['id_user']; ?>" class="um-btn-action" title="change role to admin">
                                 <i class="fa-solid fa-user-shield"></i>
                             </a>
                             
