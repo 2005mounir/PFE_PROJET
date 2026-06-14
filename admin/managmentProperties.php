@@ -3,6 +3,11 @@
 require_once '../config.php';
 require_once '../classes/property.php';//get class 
 
+//check if user is admin
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
 
 $dashboard = new Property($pdo);
 $properties = $dashboard->getAllPropertiesWithDetails();
@@ -103,7 +108,7 @@ endif;
 
                     <!-- reject button -->
                     <?php if ($prop['status'] == 'pending' || $prop['status'] == 'approved'): ?>
-                            <a href="rejectProperty.php?id=<?= $prop['id_property']; ?>" 
+                            <a href="rejectedProperty.php?id=<?= $prop['id_property']; ?>" 
                                 class="btn-custom btn-reject" title="Reject"
                               onclick="return confirm('Are you sure you want to reject this property?');">
                             <i class="fas fa-times-circle"></i>

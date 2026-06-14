@@ -2,6 +2,13 @@
 
 require_once '../config.php';//connect with data base
 
+
+//check if user is admin
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+    header("Location: login.php");
+    exit();
+}
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 

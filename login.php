@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                     if ($_SESSION['user_role'] === 'admin') {
                           header("Location: admin/admin-dashboard.php");
                     } elseif ($_SESSION['user_role'] === 'owner') {
-                          header("Location: owner_profile.php");
+                          header("Location: owner/myProperties.php");
                      } else {
                            header("Location: index.php");
                     }
