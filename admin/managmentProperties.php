@@ -1,10 +1,10 @@
 <?php
 
 require_once '../config.php';
-require_once '../classes/CalssadminDashboard.php';//get class 
+require_once '../classes/property.php';//get class 
 
 
-$dashboard = new AdminDashboard($pdo);
+$dashboard = new Property($pdo);
 $properties = $dashboard->getAllPropertiesWithDetails();
 
 
@@ -19,6 +19,24 @@ include 'includes/sidebar.php';
 <div class="properties-management-container">
  <h2>Management Properties</h2>
     <div class="table-container">
+
+    
+<?php
+
+// check if session message isset
+if (isset($_SESSION['message'])): ?>
+    <div class="alert alert-msg alert-success" 
+        <?php echo ($_SESSION['msg_type'] == 'success') ? 'background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : 'background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'; ?>">
+        <?= $_SESSION['message']; ?>
+    </div>
+    
+<?php 
+//delete message from session
+    unset($_SESSION['message']);
+    unset($_SESSION['msg_type']);
+endif; 
+?>
+
 
 <table class="my-custom-table">
     <thead class="table-header-custom">
@@ -46,28 +64,28 @@ include 'includes/sidebar.php';
             
             <!-- title -->
             <td class="cell-title">
-                <strong><?= htmlspecialchars($prop['title']); ?></strong><br>
+                <strong><?= htmlspecialchars($prop['title']); ?></strong>
                 <span class="price-text"><?= number_format($prop['price'], 2); ?> DH</span>
             </td>
 
              <!-- bathrooms and rooms -->
             <td class="cell-details">
-                Type: <?= htmlspecialchars($prop['type']); ?><br>
-                Rooms: <?= htmlspecialchars($prop['rooms']); ?><br>
+                Type: <?= htmlspecialchars($prop['type']); ?>
+                Rooms: <?= htmlspecialchars($prop['rooms']); ?>
                 <strong>Bath: <?= htmlspecialchars($prop['bathrooms']); ?></strong> 
          </td>
 
             <!-- ounser name and email -->
             <td class="cell-owner">
-                <?= htmlspecialchars($prop['owner_name']); ?><br>
+                <?= htmlspecialchars($prop['owner_name']); ?>
                 <small class="email-text"><?= htmlspecialchars($prop['owner_email']); ?></small>
             </td>
 
              <!--location information  -->
            <td class="cell-location">
-                <?= htmlspecialchars($prop['city_name']); ?> / <?= htmlspecialchars($prop['country_name']); ?><br>
+                <?= htmlspecialchars($prop['city_name']); ?> / <?= htmlspecialchars($prop['country_name']); ?>
                 <small class="text-muted">
-                    Lat: <?= htmlspecialchars($prop['latitude']); ?><br>
+                    Lat: <?= htmlspecialchars($prop['latitude']); ?>
                     Long: <?= htmlspecialchars($prop['longitude']); ?>
                 </small>
             </td>
@@ -78,7 +96,7 @@ include 'includes/sidebar.php';
             </td>
 
             <td class="cell-actions">
-                <a href="showProperty.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-view" title="View">
+                <a href="viewProperty.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-view" title="View">
                     <i class="fas fa-eye"></i>
                 </a>
 
@@ -94,6 +112,12 @@ include 'includes/sidebar.php';
 
                       <!--validate button  -->
                     <?php if ($prop['status'] == 'pending'): ?>
+                            <a href="validateProperty.php?id=<?= $prop['id_property']; ?>" 
+                            class="btn-custom btn-validate" title="Validate" >
+                           <i class="fas fa-check-circle"></i>
+                    </a>
+                <?php endif; ?>
+                <?php if ($prop['status'] == 'rejected'): ?>
                             <a href="validateProperty.php?id=<?= $prop['id_property']; ?>" 
                             class="btn-custom btn-validate" title="Validate" >
                            <i class="fas fa-check-circle"></i>

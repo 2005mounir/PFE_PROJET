@@ -1,7 +1,7 @@
 <?php
 
 require_once '../config.php';
-require_once '../classes/CalssadminDashboard.php';
+require_once '../classes/users.php';
 
 // check if user is admin
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
 }
 
 //get class and getAllUsers method
-$dashboard = new AdminDashboard($pdo);
+$dashboard = new users($pdo);
 $users = $dashboard->getAllUsers();
 
 
@@ -23,7 +23,7 @@ include 'includes/sidebar.php';
 
      <!-- deleted message or readed-->
      <?php if (isset($_SESSION['user_success'])): ?>
-        <div class="alert alert-success">
+        <div class="alert alert-msg alert-success">
             <?php echo $_SESSION['user_success']; ?>
         </div>
         <?php unset($_SESSION['user_success']); ?>

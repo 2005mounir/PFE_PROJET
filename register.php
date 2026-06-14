@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
             $hashed_password = password_hash($password, PASSWORD_BCRYPT); 
            
            // sin up object;
-            $SinupuserObj = new Sinupuser($pdo);
+            $SinupuserObj = new users($pdo);
 
             // check if email in database
             if($SinupuserObj->emailExists($email)){

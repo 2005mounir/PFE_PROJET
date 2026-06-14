@@ -114,5 +114,63 @@ class Property {
             ];
         }
     }
+
+
+
+
+
+  //method get all properties with details from database to use in managment properties;
+       public function getAllPropertiesWithDetails() {
+            $sql = "SELECT 
+                        properties.*, 
+                        users.name AS owner_name, 
+                        users.email AS owner_email,
+                        cities.city_name AS city_name,
+                        countries.country_name AS country_name,
+                        MIN(images.image_path) AS first_image
+                    FROM properties
+                    JOIN users ON properties.id_user = users.id_user
+                    JOIN cities ON properties.id_city = cities.id_city
+                    JOIN countries ON properties.id_country = countries.id_country
+                    LEFT JOIN images ON properties.id_property = images.id_property
+                    GROUP BY properties.id_property
+                    ORDER BY properties.created_at DESC";
+            
+            $stmt = $this->db->query($sql);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+       }
+
+       
+
+       //get details of one propereties to use in view property
+    public function getPropertyDetailsForAdmin($id) {
+        $stmt = $this->db->prepare("
+            SELECT p.*, 
+                u.name AS owner_name, 
+                u.phone AS owner_phone, 
+                u.email AS owner_email, 
+                u.whatsapp AS owner_whatsapp,
+                c.city_name, 
+                co.country_name
+            FROM properties p
+            JOIN users u ON p.id_user = u.id_user
+            JOIN cities c ON p.id_city = c.id_city
+            JOIN countries co ON p.id_country = co.id_country
+            WHERE p.id_property = :id
+        ");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    
+
+        // get all images of one properties to use in veiw properties
+        public function getImagesByProperty($id) {
+        $stmt = $this->db->prepare("SELECT image_path FROM images WHERE id_property = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+                                
+
 }
 ?>

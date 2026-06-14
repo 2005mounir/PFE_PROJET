@@ -8,8 +8,9 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
 <div class="sidebar">
     <div class="logo">
         <h2>
+             Rentora 
        <i class="fa-solid fa-building-shield brand-icon"></i> 
-         Rentora 
+         
 </h2>
         <small>Admin & Strategy Dashboard</small>
     </div>
@@ -19,13 +20,6 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
           <a href="admin-dashboard.php" class="active">
             <i class="fa-solid fa-chart-pie"></i>  Dashboard
         </a>
-        </li>
-
-
-        <li>
-            <a href="../index.php">
-                home
-            </a>
         </li>
 
         <li>

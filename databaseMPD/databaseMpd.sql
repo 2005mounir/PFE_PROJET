@@ -73,22 +73,26 @@ CREATE TABLE properties (
 
     id_user INT NOT NULL,
     id_city INT NOT NULL,
-    id_currency INT NOT NULL,
+    id_country INT NOT NULL,
+
 
     CONSTRAINT fk_property_user
     FOREIGN KEY (id_user)
     REFERENCES users(id_user)
     ON DELETE CASCADE,
 
+    CONSTRAINT fk_property_country
+    FOREIGN KEY (id_country)
+    REFERENCES countries(id_country)
+    ON DELETE CASCADE,
+
+
     CONSTRAINT fk_property_city
     FOREIGN KEY (id_city)
     REFERENCES cities(id_city)
     ON DELETE CASCADE,
 
-    CONSTRAINT fk_property_currency
-    FOREIGN KEY (id_currency)
-    REFERENCES currencies(id_currency)
-    ON DELETE CASCADE
+   
 );
 
 

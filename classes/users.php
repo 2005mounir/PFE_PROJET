@@ -1,7 +1,7 @@
 <?php
 
 
- class Sinupuser{
+ class users{
 
    private $db;
 
@@ -74,6 +74,20 @@
           }
           return false;
        }
+
+
+
+
+    // get all users to use in managment users i dashbord admin
+            public function getAllUsers() {
+                $stmt = $this->db->prepare("SELECT * FROM users ORDER BY id_user DESC");
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+
     }
 
 

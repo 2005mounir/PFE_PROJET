@@ -27,7 +27,7 @@ include 'includes/sidebar.php';
     
      <!-- deleted message or readed-->
         <?php if (isset($_SESSION['success'])): ?>
-            <div class="alert alert-success">
+            <div class="alert alert-msg alert-success">
                 <?php echo $_SESSION['success']; ?>
             </div>
             <?php unset($_SESSION['success']); ?>

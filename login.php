@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
      // 4. If inputs are clean, proceed to database validation
     if (empty($errors)) {
         
-        $userObj = new Sinupuser($pdo);
+        $userObj = new users($pdo);
         $userData = $userObj->login($email, $password);
 
         if ($userData) {

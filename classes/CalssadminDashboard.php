@@ -10,6 +10,9 @@ class AdminDashboard {
         $this->db = $dbConnection;
      }
 
+
+
+     
     //Calculate the total number of registered users
     public function getTotalUsers() {
         $query = "SELECT COUNT(*) as total FROM users";
@@ -18,6 +21,8 @@ class AdminDashboard {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] ?? 0;
      }
+
+
 
 
     // Calculate the total number of properties in the system
@@ -30,6 +35,8 @@ class AdminDashboard {
       }
 
 
+
+
     // Calculate the total number of approved (active) properties
     public function getApprovedProperties() {
         $query = "SELECT COUNT(*) as total FROM properties WHERE status = 'approved'";
@@ -39,6 +46,8 @@ class AdminDashboard {
         return $result['total'] ?? 0;
     }
 
+
+
     //  Calculate the total number of pending properties awaiting review
     public function getPendingProperties() {
         $query = "SELECT COUNT(*) as total FROM properties WHERE status = 'pending'";
@@ -47,6 +56,7 @@ class AdminDashboard {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] ?? 0;
       }
+
 
 
     //Calculate the total number of unread messages
@@ -111,41 +121,13 @@ class AdminDashboard {
         }
 
 
+
           //method get last 5 users;
           public function getRecentUsers($limit = 5) {
               $stmt = $this->db->prepare("SELECT * FROM users ORDER BY id_user DESC LIMIT :limit");
               $stmt->execute(['limit' => (int)$limit]);
               return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
-
-         //method get all users f
-            public function getAllUsers() {
-                $stmt = $this->db->prepare("SELECT * FROM users ORDER BY id_user DESC");
-                $stmt->execute();
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-
-        //method get all properties with details from database
-       public function getAllPropertiesWithDetails() {
-            $sql = "SELECT 
-                        properties.*, 
-                        users.name AS owner_name, 
-                        users.email AS owner_email,
-                        cities.city_name AS city_name,
-                        countries.country_name AS country_name,
-                        MIN(images.image_path) AS first_image
-                    FROM properties
-                    JOIN users ON properties.id_user = users.id_user
-                    JOIN cities ON properties.id_city = cities.id_city
-                    JOIN countries ON properties.id_country = countries.id_country
-                    LEFT JOIN images ON properties.id_property = images.id_property
-                    GROUP BY properties.id_property
-                    ORDER BY properties.created_at DESC";
-            
-            $stmt = $this->db->query($sql);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
 
 }
 

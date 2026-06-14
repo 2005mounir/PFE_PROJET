@@ -8,11 +8,12 @@ if (session_status() === PHP_SESSION_NONE) {
     
 <!-- ⬅ Logo (Always on the Left) -->
      <a href="index.php" class="logo-container">
-        <i class="fa-solid fa-house-chimney-window"></i> 
+              <i class="fa-solid fa-building-shield brand-icon"></i> 
         <span class="logo-text">Rentora</span>
     </a>
 
-<!--  Mobile Menu Button (Visible Only on Mobile, Right Side) -->    <button class="mobile-menu-btn" id="mobileMenuBtn">
+<!--  Mobile Menu Button (Visible Only on Mobile, Right Side) -->    
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fa-solid fa-bars"></i>
     </button>
 

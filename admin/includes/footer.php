@@ -10,9 +10,17 @@
                 <span><i class="fa-solid fa-code-branch"></i> Version 1.0.0</span>
                 <span>• Admin Console</span>
             </div>
-        </div>
+        </div> 
+      
+ 
+
+
     </footer>
-    <script src="../js/admin.js"></script>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+ <script src="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.js"></script>
+ <script src="../js/admin.js"></script>
 
 </body>
 </html>
