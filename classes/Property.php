@@ -172,5 +172,27 @@ class Property {
   }
                                 
 
+
+//get property  by owner
+public function getPropertiesByOwner($owner_id) {
+    $sql = "SELECT 
+                p.*, 
+                cities.city_name AS city_name, 
+                countries.country_name AS country_name,
+                 MIN(images.image_path) AS first_image
+            FROM properties AS p
+            INNER JOIN cities ON p.id_city = cities.id_city 
+            INNER JOIN countries ON p.id_country = countries.id_country 
+            LEFT JOIN images ON p.id_property = images.id_property
+            WHERE p.id_user = :owner_id 
+            GROUP BY p.id_property
+            ORDER BY p.id_property DESC";
+            
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute(['owner_id' => $owner_id]);
+    
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 }
 ?>

@@ -35,7 +35,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 if ($_SESSION['user_role'] === 'admin') {
                     $profile_url = 'admin/admin-dashboard.php';
                 } elseif ($_SESSION['user_role'] === 'owner') {
-                    $profile_url = 'owner/dashboard.php';
+                    $profile_url = 'owner/myProperties.php';
                 }
                 ?>
                 <a href="<?php echo $profile_url; ?>" class="btn-account">

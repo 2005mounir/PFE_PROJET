@@ -4,8 +4,9 @@
         
         <div class="footer-column footer-about">
             <a href="index.php" class="footer-logo">
-                <i class="fa-solid fa-house-chimney-window"></i> 
-                <span>Rentora</span>
+                    <span>Rentora</span>
+                 <i class="fa-solid fa-building-shield brand-icon"></i> 
+               
             </a>
             <p>Your premium global platform to find and rent the best properties with ease, transparency, and high security.</p>
         </div>
