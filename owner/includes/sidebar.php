@@ -29,7 +29,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'owner') {
 
         <li>
             <a href="../contact.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'active' : ''; ?>">
-                <i class="fa-solid fa-envelope"></i> Contact Support
+                <i class="fa-solid fa-envelope"></i> Contact 
             </a>
         </li>
 

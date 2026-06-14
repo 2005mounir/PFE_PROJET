@@ -1,4 +1,5 @@
 <footer class="main-footer">
+    <script src="../js/owner.js"></script>
     <script src="js/main.js"></script>
     <div class="footer-container">
         
@@ -33,6 +34,8 @@
 
     </div>
 
+
+    
     <div class="footer-bottom">
         <p>&copy; <?php echo date('Y'); ?> Rentora. All rights reserved.</p>
     </div>

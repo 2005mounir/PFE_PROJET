@@ -8,10 +8,32 @@ $propertyObj = new Property($pdo);
 $properties = $propertyObj->getPropertiesByOwner($_SESSION['user_id']);
 include 'includes/header.php';
 ?>
-<div class="tiltleh2">
-    <h2>My Properties</h2>
-</div>
+<h2 class="tiltleh2">
+    <span>
+         My Properties
+    </span>
+   <i class="fa-solid fa-house-chimney"></i>
+
+    </i> 
+</h2>
+
+
+
+<div>     
+<?php if (isset($_SESSION['message'])): ?>
+        <div class="alert-msg <?= $_SESSION['msg_type'] === 'success' ? 'alert-success' : 'alert-error'; ?>">
+            <?= htmlspecialchars($_SESSION['message']); ?>
+        </div>
+       <?php 
+        // ضروري تمسحي الرسالة باش ما تبقاش طالعة كل مرة ديري فيها Refresh
+        unset($_SESSION['message']); 
+        unset($_SESSION['msg_type']);
+       ?>
+        <?php endif; ?>
+
 <div class="containerprp1">
+
+
 <div class="containerMyproperty">
     <table class="my-custom-table">
         <thead class="table-header-custom">
@@ -63,7 +85,7 @@ include 'includes/header.php';
                 <td class="cell-actions">
                     <a href="viewProperty.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-view" title="View"><i class="fas fa-eye"></i></a>
                     <a href="editProperty.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-validate" title="Edit"><i class="fas fa-edit"></i></a>
-                    <a href="deleteProperty.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-delete" title="Delete" onclick="return confirm('Are you sure?');">
+                    <a href="deletePrpOwner.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-delete" title="Delete" onclick="return confirm('Are you sure?');">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </td>
@@ -74,7 +96,7 @@ include 'includes/header.php';
    
 </div>
 </div>
-
+</div>  
 <?php  
   include "../includes/footer.php";
 ?>
