@@ -776,8 +776,10 @@ body {
 
 .properties-management-container h2 {
     color: var(--header-bg);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-weight: 600;
+   display: flex;
+   justify-content: flex-end;
 }
 
 .table-container {
@@ -942,8 +944,8 @@ tr:has(.badge-custom) .badge-custom {
      view properties.php
 =================================*/
 .property-view {
-    max-width: 1400px;
-    margin: 15;
+    max-width: 100%;
+   
     padding: 20px;
     background-color: #f6faff;
     border-radius: 15px;

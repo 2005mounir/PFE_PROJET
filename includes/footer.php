@@ -1,13 +1,15 @@
 <footer class="main-footer">
-    <script src="../js/owner.js"></script>
-    <script src="js/main.js"></script>
+       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+       <script src="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.js"></script>
+    <script src="../js/main.js"></script>
+        <script src="../js/owner.js"></script>
+
     <div class="footer-container">
         
         <div class="footer-column footer-about">
             <a href="index.php" class="footer-logo">
-                    <span>Rentora</span>
-                 <i class="fa-solid fa-building-shield brand-icon"></i> 
-               
+                <span>Rentora</span>
+                <i class="fa-solid fa-building-shield brand-icon"></i> 
             </a>
             <p>Your premium global platform to find and rent the best properties with ease, transparency, and high security.</p>
         </div>
@@ -34,8 +36,6 @@
 
     </div>
 
-
-    
     <div class="footer-bottom">
         <p>&copy; <?php echo date('Y'); ?> Rentora. All rights reserved.</p>
     </div>

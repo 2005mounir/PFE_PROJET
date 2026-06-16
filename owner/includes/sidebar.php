@@ -5,49 +5,46 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'owner') {
 }
 ?>
 
+
 <div class="sidebar">
     <div class="logo">
-        <h2>
-            Rentora 
-               <i class="fa-solid fa-building-shield brand-icon"></i> 
-        </h2>
+        <h2>Rentora <i class="fa-solid fa-building-shield brand-icon"></i> 
+       </h2>
         <small>Owner Dashboard</small>
     </div>
-    
+    <header>
     <ul class="nav-links">
         <li>
-            <a href="myProperties.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'myProperties.php') ? 'active' : ''; ?>">
+            <a href="myPropertiy.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'myProperties.php') ? 'active' : ''; ?>">
                 <i class="fa-solid fa-house-chimney"></i> My Properties
             </a>
         </li>
-
         <li>
             <a href="../add.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'add.php') ? 'active' : ''; ?>">
                 <i class="fa-solid fa-circle-plus"></i> Add Property
             </a>
         </li>
-
         <li>
             <a href="../contact.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'active' : ''; ?>">
-                <i class="fa-solid fa-envelope"></i> Contact 
+                <i class="fa-solid fa-envelope"></i> Contact Support
             </a>
         </li>
-
+        
         <hr class="sidebar-divider">
-
+        
         <li>
             <a href="../index.php" target="_blank" class="link-site">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
             </a>
         </li>
-
         <li>
-            <a href="../logout.php" class="link-logout"> 
+            <a href="../logout.php" class="link-logout">
                 <i class="fa-solid fa-right-from-bracket"></i> Logout
             </a>
         </li>
     </ul>
 </div>
+</header>
 
 
 <style>

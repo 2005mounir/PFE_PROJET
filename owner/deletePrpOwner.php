@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
         $_SESSION['msg_type'] = "error";
     }
 
-    header('Location: myProperties.php');
+    header('Location: myPropertiy.php');
     exit;
 }
 ?>

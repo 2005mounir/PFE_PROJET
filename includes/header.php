@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 ?>
 <!--  Rentora Main Header -->
  <header class="main-header">
-    
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- ⬅ Logo (Always on the Left) -->
      <a href="index.php" class="logo-container">
               <i class="fa-solid fa-building-shield brand-icon"></i> 
@@ -25,6 +25,8 @@ if (session_status() === PHP_SESSION_NONE) {
             <a href="houses.php" class="nav-link">All Houses</a>
             <a href="add.php" class="nav-link add-house"><i class="fa-solid fa-circle-plus"></i> Add House</a>
             <a href="contact.php" class="nav-link">Contact</a>
+            
+
         </nav>
 
         
@@ -35,18 +37,19 @@ if (session_status() === PHP_SESSION_NONE) {
                 if ($_SESSION['user_role'] === 'admin') {
                     $profile_url = 'admin/admin-dashboard.php';
                 } elseif ($_SESSION['user_role'] === 'owner') {
-                    $profile_url = 'owner/myProperties.php';
+                    $profile_url = 'owner/mypropertiy.php';
                 }
                 ?>
                 <a href="<?php echo $profile_url; ?>" class="btn-account">
                     <i class="fa-solid fa-user-gear"></i> My Account
                 </a>
+                
             <?php else: ?>
                 <a href="login.php" class="btn-login">Login</a>
                 <a href="register.php" class="btn-signup">Sign Up</a>
             <?php endif; ?>
-        </div>
 
+        </div>
     </div>
 </header>
 
@@ -156,6 +159,26 @@ if (session_status() === PHP_SESSION_NONE) {
     display: flex;
     align-items: center;
     gap: 8px; 
+}
+
+.btn-logout {
+
+    text-decoration: none;
+    color: #dc2626;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    transition: all 0.2s;
+   
+}
+
+.btn-logout:hover {
+    color: #b91c1c;
+    background-color: #fef2f2;
+    border-radius: 6px;
 }
 
 .mobile-menu-btn { 

@@ -177,8 +177,8 @@ body {
 }
 
 /* Status colors */
-.status-approved {
-    background: #d1fae5;
+.status {
+    background: #bdf1d6;
     color: #065f46;
 }
 
@@ -272,13 +272,521 @@ body {
 }
 
 
+/*===================================
+  end code css myproperties
+====================================*/
 
 
 
 
 
+/*===========================================
+    code view property
+=============================================*/
+.property-view {
+    max-width: 1400px;
+    margin: 15;
+    padding: 20px;
+    background-color: #f6faff;
+    border-radius: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.property-title {
+    color: #3b82f6;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Styles pour la galerie d'images - IMAGE KBIBA 3ARD KAMAL */
+.gallery-container {
+ 
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 3px  3px rgba(11, 141, 233, 0.1);
+}
+
+.main-image {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#current-img {
+    width: 90%;
+    height: auto;
+    max-height: 600px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+#current-img:hover {
+    transform: scale(1.02);
+}
+
+.thumbnails {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.thumb {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.thumb:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-color: #4a90e2;
+}
+
+/* Grille d'informations */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.property-data, .right-column {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 3px  3px rgba(11, 141, 233, 0.1);
+}
+
+.property-data h3, .owner-data h3 {
+    color: #1e4a76;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #b3d4fc;
+}
+
+.property-data p, .owner-data p {
+    margin: 12px 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.property-data p strong {
+    color: #4a90e2;
+    min-width: 120px;
+    display: inline-block;
+}
+
+/* Section propriétaire */
+.owner-data {
+    margin-bottom: 25px;
+}
+
+.owner-data p strong {
+    color: #4a90e2;
+    min-width: 100px;
+    display: inline-block;
+}
+
+/* Bouton WhatsApp */
+.whatsapp-btn {
+    display: inline-block;
+    background: linear-gradient( #128C7E);
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+    background: linear-gradient(135deg, #128C7E, #075E54);
+}
+
+/* Carte */
+#map-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px  rgba(11, 141, 233, 0.1);
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .property-view {
+        padding: 10px;
+        margin: 10px auto;
+        width: 95%;
+    }
+    
+    .property-data, .right-column {
+        padding: 15px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .property-title {
+        font-size: 1.5rem;
+    }
+    
+    .main-image {
+        min-height: 250px;
+    }
+    
+    .thumb {
+        width: 70px;
+        height: 60px;
+    }
+    
+    .property-data p strong, .owner-data p strong {
+        min-width: 100px;
+    }
+    
+    #map {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .thumb {
+        width: 60px;
+        height: 50px;
+    }
+    
+    .whatsapp-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    #current-img {
+        max-height: 300px;
+    }
+}
+
+/* Animation pour le chargement */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.property-view > * {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Style pour les badges ou status */
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: #4a90e2;
+    color: white;
+}
+
+/* Amélioration du scroll pour les miniatures */
+.thumbnails::-webkit-scrollbar {
+    height: 8px;
+}
+
+.thumbnails::-webkit-scrollbar-track {
+    background: #e8f4ff;
+    border-radius: 10px;
+}
+
+.thumbnails::-webkit-scrollbar-thumb {
+    background: #4a90e2;
+    border-radius: 10px;
+}
+
+/* Style pour les liens dans la carte */
+.leaflet-popup-content {
+    color: #1e4a76;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .property-view {
+        padding: 15px;
+    }
+    
+    .property-title {
+        font-size: 1.5rem;
+    }
+    
+    .main-image {
+        min-height: 250px;
+    }
+    
+    .thumb {
+        width: 70px;
+        height: 60px;
+    }
+    
+    .property-data p strong, .owner-data p strong {
+        min-width: 100px;
+    }
+    
+    #map {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .thumb {
+        width: 60px;
+        height: 50px;
+    }
+    
+    .whatsapp-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* Animation pour le chargement */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.property-view > * {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Style pour les badges ou status */
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+   
+    color: white;
+}
+
+/* Amélioration du scroll pour les miniatures */
+.thumbnails::-webkit-scrollbar {
+    height: 8px;
+}
+
+.thumbnails::-webkit-scrollbar-track {
+    background: #e8f4ff;
+    border-radius: 10px;
+}
+
+.thumbnails::-webkit-scrollbar-thumb {
+    background: #4a90e2;
+    border-radius: 10px;
+}
+
+/* Style pour les liens dans la carte */
+.leaflet-popup-content {
+    color: #1e4a76;
+    font-weight: bold;
+}
+
+/*=============================
+    end code css view properties
+================================*/
 
 
 
 
 
+/*===============================
+   code editeproprty
+===================================*/
+
+.main-content {
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 40px;
+        background-color: white;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h2 {
+        color: #2563eb;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .addP {
+        font-size: 1.1rem;
+        color: #4b5563;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    #propertyForm {
+        width: 80%; /* Adjusted for dashboard width */
+        max-width: 900px;
+        border: 2px solid #b4b4e3;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 12px 25px rgba(184, 192, 249, 0.4);
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+        width: 100%;
+    }
+
+    .addLable {
+        color: #4b5563;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        display: block;
+        text-transform: none; /* Match add.php */
+        letter-spacing: normal;
+        text-align: left;
+    }
+
+    input[type="text"], 
+    input[type="number"], 
+    select, 
+    textarea {
+        width: 100% !important;
+        padding: 14px 18px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        background-color: #f8fafc;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        text-align: left;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #2563eb;
+        background-color: #fff;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    .row-selects {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .row-selects > .form-group {
+        flex: 1;
+    }
+
+    .btn-submit {
+        width: 100%;
+        background: #2563eb;
+        color: #ffffff;
+        padding: 18px;
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 30px;
+    }
+
+    .btn-submit:hover {
+        background: #1e293b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    #map {
+        height: 450px;
+        width: 100%;
+        border-radius: 12px;
+        border: 2px solid #e2e8f0;
+        margin-top: 10px;
+    }
+
+    .error-msg {
+        color: #dc2626;
+        font-size: 0.85rem;
+        margin-top: 5px;
+        display: block;
+        font-weight: 500;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        #propertyForm {
+            width: 100%;
+            padding: 25px;
+        }
+        .row-selects {
+            flex-direction: column;
+            gap: 0;
+        }
+        h2 {
+            font-size: 1.8rem;
+        }}
+
+        
+/*===================================
+     end code edite
+====================================*/

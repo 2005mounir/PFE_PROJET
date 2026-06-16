@@ -167,8 +167,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-
-
 // If any tampering or error is detected, stop the process immediately and return errors
     if (!empty($errors)) {
         echo json_encode([
@@ -203,11 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
 
 
-
-
-
 $files_to_send = $_FILES['property_images'] ?? [];
-
 
 
 // 2. Fix "Undefined array key 'role'" issue:
@@ -217,6 +211,12 @@ $current_user_id = $_SESSION['user_id'] ?? null;
 
 
    $result = $propertyManager->save($clean_data, $files_to_send, $current_user_id, $current_role);
+
+   // Update the role in the session if the upgrade was successful to avoid needing to log out and back in
+   if ($result['status'] === 'success' && isset($result['upgrade_role']) && $result['upgrade_role'] === true) {
+       $_SESSION['role'] = 'owner';
+   }
+
           echo json_encode($result);
         exit();
 
@@ -248,7 +248,9 @@ $current_user_id = $_SESSION['user_id'] ?? null;
     <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.css" />
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
-
+    <style>
+        
+    </style>
 </head>
 <body class="body">
 
@@ -293,7 +295,7 @@ try {
       
         <div id="form-general-error"></div>
 
-        <form id="propertyForm" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <form   id="propertyForm" method="POST" enctype="multipart/form-data" autocomplete="off">
             
             <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
             

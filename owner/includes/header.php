@@ -18,13 +18,21 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'owner') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owner Dashboard</title>
 
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.js"></script>
+
+    
+    
 
     <link rel="stylesheet" href="../css/owner.css">
+
+
 </head>
 <body>
 <div class="wrapper">
@@ -57,4 +65,3 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'owner') {
 
         <div class="content-body">
          
-

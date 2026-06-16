@@ -25,23 +25,19 @@ include 'includes/sidebar.php';
  <h2>Management Properties</h2>
     <div class="table-container">
 
-    
-<?php
 
-// check if session message isset
-if (isset($_SESSION['message'])): ?>
-    <div class="alert alert-msg alert-success" 
-        <?php echo ($_SESSION['msg_type'] == 'success') ? 'background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : 'background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'; ?>">
-        <?= $_SESSION['message']; ?>
+
+
+<?php if (isset($_SESSION['message'])): ?>
+    <div id="session-alert" class="alert alert-msg" 
+         style="<?php echo ($_SESSION['msg_type'] == 'success') ? 'background-color: #c0eecb;padding:25px; color: #141614; border: 1px solid #c3e6cb;' : 'background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'; ?> padding: 15px; margin: 10px 0; border-radius: 5px;">
+        <?= htmlspecialchars($_SESSION['message']); ?>
     </div>
-    
 <?php 
-//delete message from session
     unset($_SESSION['message']);
     unset($_SESSION['msg_type']);
 endif; 
 ?>
-
 
 <table class="my-custom-table">
     <thead class="table-header-custom">

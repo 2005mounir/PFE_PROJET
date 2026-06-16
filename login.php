@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                     if ($_SESSION['user_role'] === 'admin') {
                           header("Location: admin/admin-dashboard.php");
                     } elseif ($_SESSION['user_role'] === 'owner') {
-                          header("Location: owner/myProperties.php");
+                          header("Location: owner/myPropertiy.php");
                      } else {
                            header("Location: index.php");
                     }
@@ -130,7 +130,7 @@ if (empty($_SESSION['csrf_token'])) {
    ?>
 <div class="register-wrapper">
     <div class="loginImage">
-        <img src="../assets/images/contactImage.png" alt="Login Image" class="login-image">
+        <img src="assets/images/contactImage.png" alt="Login Image" class="login-image">
     </div>
 
    <div class="register-container">

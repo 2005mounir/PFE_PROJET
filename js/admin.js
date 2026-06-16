@@ -44,15 +44,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-//code delete message erreur in 3 second from browser
-document.addEventListener('DOMContentLoaded', function() {
-    //get all messages
-    var alerts = document.querySelectorAll('.alert-msg');
+//fuction gllary view properties of admin
+function changeMainImage(newSrc) {
+    let mainImg = document.getElementById('current-img');
+    mainImg.src = newSrc;
+}
+
+
+
+
+
+
+//delete property message properties
+function autoHideAlert(elementId, delay = 3000) {
+  let alertDiv = document.getElementById(elementId);
     
-    alerts.forEach(function(alert) {
-// Hide the message after 3 seconds
-        setTimeout(function() {
-            alert.style.display = 'none';
-        }, 3000);
+    if (alertDiv) {
+        setTimeout(() => {
+            alertDiv.style.transition = "opacity 0.5s ease";
+            alertDiv.style.opacity = "0";
+            
+            setTimeout(() => {
+                alertDiv.style.display = 'none';
+            }, 500); 
+        }, delay);
+    }
+}
+
+
+
+
+//delete message of user  after 3 second
+document.addEventListener('DOMContentLoaded', () => {
+    autoHideAlert('session-alert', 3000);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+   let messages = document.querySelectorAll('.auto-hide-msg');
+    messages.forEach(msg => {
+        setTimeout(() => {
+            msg.style.transition = "opacity 0.5s ease";
+            msg.style.opacity = "0";
+            
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 500);
+        }, 3000); 
     });
 });
+
+

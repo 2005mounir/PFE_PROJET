@@ -2,11 +2,11 @@
 
 
 // 1. SECURITY HEADERS
-
+/*
 header("X-Content-Type-Options: nosniff");
 header("X-Frame-Options: DENY");
 header("X-XSS-Protection: 1; mode=block");
-
+*/
 
 
 
@@ -70,13 +70,11 @@ try {
 //centralized authentication checker
 function check_auth() {
     if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
-        
-        // The magic here: get the exact path of the current page (e.g. /project_pfe/add.php)
-       // Then extract only the filename (add.php) using basename()
         $_SESSION['redirect_url'] = basename($_SERVER['REQUEST_URI']);
         
-// Redirect to the login page with a clean and simple URL
-        header("Location: login.php");
+       // Redirect to the login page with a clean and simple URL
+       header('Location: login.php');
         exit();
     }
 }
+

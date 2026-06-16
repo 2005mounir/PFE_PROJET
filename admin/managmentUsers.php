@@ -22,19 +22,19 @@ include 'includes/sidebar.php';
 <div class="users-management-container">
 
      <!-- deleted message or readed-->
-     <?php if (isset($_SESSION['user_success'])): ?>
-        <div class="alert alert-msg alert-success">
-            <?php echo $_SESSION['user_success']; ?>
-        </div>
-        <?php unset($_SESSION['user_success']); ?>
-   <?php endif; ?>
-   
-      <?php if (isset($_SESSION['user_error'])): ?>
-                        <div class="alert-error">
-                            <?= $_SESSION['user_error']; ?>
-                        </div>
-                        <?php unset($_SESSION['user_error']); ?>
-    <?php endif; ?>
+    <?php if (isset($_SESSION['user_success'])): ?>
+    <div class="alert alert-msg alert-success auto-hide-msg">
+        <?php echo $_SESSION['user_success']; ?>
+    </div>
+    <?php unset($_SESSION['user_success']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['user_error'])): ?>
+    <div class="alert-error auto-hide-msg">
+        <?= $_SESSION['user_error']; ?>
+    </div>
+    <?php unset($_SESSION['user_error']); ?>
+<?php endif; ?>
 
 
    <div class="table-responsive">

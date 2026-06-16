@@ -12,7 +12,7 @@ include 'includes/header.php';
     <span>
          My Properties
     </span>
-   <i class="fa-solid fa-house-chimney"></i>
+   
 
     </i> 
 </h2>
@@ -25,7 +25,6 @@ include 'includes/header.php';
             <?= htmlspecialchars($_SESSION['message']); ?>
         </div>
        <?php 
-        // ضروري تمسحي الرسالة باش ما تبقاش طالعة كل مرة ديري فيها Refresh
         unset($_SESSION['message']); 
         unset($_SESSION['msg_type']);
        ?>
@@ -75,16 +74,16 @@ include 'includes/header.php';
                 <td><?= htmlspecialchars($prop['city_name']); ?></td>
 
                 <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                    <?= htmlspecialchars(substr($prop['description'], 0, 50)); ?>...
+                    <?= htmlspecialchars(substr($prop['discription'], 0, 50)); ?>...
                 </td>
 
                 <td>
-                    <span class="badge-custom"><?= htmlspecialchars($prop['status']); ?></span>
+                    <span class="badge-custom status"><?= htmlspecialchars($prop['status']); ?></span>
                 </td>
 
                 <td class="cell-actions">
-                    <a href="viewProperty.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-view" title="View"><i class="fas fa-eye"></i></a>
-                    <a href="editProperty.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-validate" title="Edit"><i class="fas fa-edit"></i></a>
+                    <a href="viewPropertyOwner.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-view" title="View"><i class="fas fa-eye"></i></a>
+                    <a href="editeProperties.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-validate" title="Edit"><i class="fas fa-edit"></i></a>
                     <a href="deletePrpOwner.php?id=<?= $prop['id_property']; ?>" class="btn-custom btn-delete" title="Delete" onclick="return confirm('Are you sure?');">
                         <i class="fas fa-trash-alt"></i>
                     </a>

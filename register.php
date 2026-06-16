@@ -214,8 +214,8 @@ require_once 'includes/header.php';
 
             <!-- ROLE -->
             <select name="role">
-                <option value="tenant">Tenant</option>
-                <option value="owner">Owner</option>
+                <option value="tenant">Renting a house</option>
+                <option value="owner">Publish a house listing</option>
             </select>
 
           

@@ -1,3 +1,4 @@
+
 // 1. Enable the map with fullscreen mode.   
 // 1. Initialize the map with reasonable zoom limits
 var map = L.map('map', {
@@ -119,7 +120,7 @@ document.getElementById('btn-locate').addEventListener('click', function() {
 
 
 
-//. MULTIPLE IMAGES LIVE PREVIEW SYSTEM
+
 
 // Global array to store all selected images across multiple clicks
 let allUploadedFiles = [];
@@ -239,11 +240,9 @@ form.addEventListener('submit', function(e) {
 // 4. Send the FormData silently to add.php via AJAX
     fetch('add.php', {
         method: 'POST',
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-        },
         body: formData // Data is being sent in the background
     })
+
 
     .then(response => {
           // Smart check: ensure the server responded successfully (Status 200) and no 500 error occurred    
@@ -252,12 +251,18 @@ form.addEventListener('submit', function(e) {
         }
         return response.json(); // Read PHP response and parse it as JSON
          })
-         
+      /*   
     .then(data => {
         if (data.status === 'success') {
             // Case A: everything was successfully saved to the database
             alert(data.message); 
-            window.location.href = 'index.php';// Direct redirect to the dashboard
+            
+           
+            // Use setTimeout to ensure the alert is closed and the browser can handle the redirect properly
+            // Also ensures that even if the promise chain is interrupted by navigation, it's done cleanly.
+            setTimeout(() => {
+                window.location.href = 'index.php'; 
+            }, 100);
              } else {
            // Case B: there is an issue returned by the server
             if (data.type === 'validation') {
@@ -267,6 +272,7 @@ form.addEventListener('submit', function(e) {
                     if (errorSpan) {
                         errorSpan.innerText = data.errors[key]; // The error is safely output using innerText
                     }
+                   return;
                 });
             } else {
                 // General system error displayed at the top only                
@@ -280,8 +286,41 @@ form.addEventListener('submit', function(e) {
             // Re-enable the button in case of an error
             submitBtn.disabled = false;
             submitBtn.innerText = "Save Property";
-        }
+        } 
+
     })
+    */
+
+
+
+    .then(data => {
+    // نوقفو الـ button باش ما يعاودش يتكليكا
+    submitBtn.disabled = true; 
+
+    if (data.status === 'success') {
+        // حيدي الـ alert نهائيا حيت كيدير مشكل مع الـ Redirect
+        console.log("Success:", data); 
+        
+        // redirect مباشرة
+        window.location.href = 'index.php'; 
+    } else {
+        // إذا كان هناك خطأ في الـ Validation
+        if (data.type === 'validation') {
+            Object.keys(data.errors).forEach(key => {
+                const errorSpan = document.getElementById(`error-${key}`);
+                if (errorSpan) errorSpan.innerText = data.errors[key];
+            });
+        } else {
+            generalErrorDiv.innerText = data.errors[0];
+            generalErrorDiv.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // رجعي الزر للخدمة إلا وقع خطأ
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Save Property";
+    }
+})
     .catch(error => {
         console.error('Error:', error);
         generalErrorDiv.innerText = "A network error occurred. Please try again.";

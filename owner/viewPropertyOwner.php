@@ -7,7 +7,7 @@ require_once '../classes/property.php';
 
 //get footer ana header
 include 'includes/header.php'; 
-include 'includes/sidebar.php';
+
 
 //get class and methods
 $adminDashboard = new property($pdo);
@@ -86,7 +86,7 @@ $images = $adminDashboard->getImagesByProperty($id);
     </div> 
         
               <a href="<?= $whatsappUrl; ?>" target="_blank" class="whatsapp-btn">
-                  Contactez-moi
+                  Contact me
              </a>
 
         </div>
@@ -104,9 +104,10 @@ $images = $adminDashboard->getImagesByProperty($id);
 
 
 
+
 <?php
 // get footer
-include 'includes/footer.php';
+include '../includes/footer.php';
 ?>
 </body>
 </html>
