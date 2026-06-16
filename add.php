@@ -212,6 +212,12 @@ $current_user_id = $_SESSION['user_id'] ?? null;
 
    $result = $propertyManager->save($clean_data, $files_to_send, $current_user_id, $current_role);
 
+if ($result['upgrade_role'] === true) {
+    $_SESSION['user_role'] = 'owner'; 
+}
+
+     
+
    // Update the role in the session if the upgrade was successful to avoid needing to log out and back in
    if ($result['status'] === 'success' && isset($result['upgrade_role']) && $result['upgrade_role'] === true) {
        $_SESSION['role'] = 'owner';

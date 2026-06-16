@@ -104,6 +104,18 @@ $images = $adminDashboard->getImagesByProperty($id);
 
 
 
+<script>
+function changeMainImage(src) {
+    const mainImg = document.getElementById('current-img');
+    if (mainImg) {
+        mainImg.style.opacity = '0';
+        setTimeout(() => {
+            mainImg.src = src;
+            mainImg.style.opacity = '1';
+        }, 200);
+    }
+}
+</script>
 
 <?php
 // get footer

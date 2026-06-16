@@ -4,8 +4,14 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ?>
 <!--  Rentora Main Header -->
- <header class="main-header">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <header class="main-header">     
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+     <link rel="stylesheet" href="../css/main.css">
 <!-- ⬅ Logo (Always on the Left) -->
      <a href="index.php" class="logo-container">
               <i class="fa-solid fa-building-shield brand-icon"></i> 
@@ -22,7 +28,6 @@ if (session_status() === PHP_SESSION_NONE) {
         
           <!-- Navigation Links (Navbar) -->        <nav class="navbar">
             <a href="index.php" class="nav-link">Home</a>
-            <a href="houses.php" class="nav-link">All Houses</a>
             <a href="add.php" class="nav-link add-house"><i class="fa-solid fa-circle-plus"></i> Add House</a>
             <a href="contact.php" class="nav-link">Contact</a>
             
@@ -38,6 +43,9 @@ if (session_status() === PHP_SESSION_NONE) {
                     $profile_url = 'admin/admin-dashboard.php';
                 } elseif ($_SESSION['user_role'] === 'owner') {
                     $profile_url = 'owner/mypropertiy.php';
+                }elseif($_SESSION['user_role'] === 'tenant'){
+                       $profile_url = 'tanentProfile.php';
+
                 }
                 ?>
                 <a href="<?php echo $profile_url; ?>" class="btn-account">

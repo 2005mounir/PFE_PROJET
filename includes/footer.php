@@ -1,6 +1,5 @@
 <footer class="main-footer">
        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-       <script src="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.js"></script>
     <script src="../js/main.js"></script>
         <script src="../js/owner.js"></script>
 

@@ -3,31 +3,20 @@ require_once 'config.php';
 require_once 'classes/property.php';
 
 
-// 1. جلب البيانات
+//get data
 $propertyObj = new property($pdo);
 $id = $_GET['id'] ?? null;
-if (!$id) { header('Location: ../index.php'); exit; }
+if (!$id) { header('Location: index.php'); exit; }
 
 $property = $propertyObj->getPropertyDetailsForAdmin($id);
 $images = $propertyObj->getImagesByProperty($id);
 
-// 2. المنطق الديناميكي لتحديد الـ Header والـ Sidebar
-$role = $_SESSION['user_role'] ?? 'guest'; // admin, owner, أو guest
 
-// تحديد المسارات (استخدمي مسارات صحيحة حسب تنظيم ملفاتك)
-if ($role === 'admin') {
-    include 'admin/includes/header.php';
-    include 'admin/includes/sidebar.php';
-} elseif ($role === 'owner') {
-    include 'owner/includes/header.php';
-    
-} else {
-    include 'includes/header.php'; // Header للمستخدم العادي
-}
+//get header
+    include 'includes/header.php'; 
 
-// 3. تحديد الصلاحيات
-$isAdmin = ($role === 'admin');
-$isOwner = (isset($_SESSION['user_id']) && $property['id_user'] == $_SESSION['user_id']);
+
+
 ?>
 
 <div class="property-view">
@@ -45,14 +34,7 @@ $isOwner = (isset($_SESSION['user_id']) && $property['id_user'] == $_SESSION['us
     </div>
 
     <div class="info-grid">
-        <div class="property-data">
-            <h3>Property Details</h3>
-            <p><strong>Description:</strong> <?= nl2br(htmlspecialchars($property['discription'])); ?></p>
-            <p><strong>Price:</strong> <?= number_format($property['price'], 2); ?> DH</p>
-            <p><strong>Type:</strong> <?= htmlspecialchars($property['type']); ?></p>
-            <p><strong>Rooms:</strong> <?= htmlspecialchars($property['rooms']); ?></p>
-            <p><strong>Location:</strong> <?= htmlspecialchars($property['city_name']); ?></p>
-        </div>
+        
 
         <div class="right-column">
             <div class="owner-data">
@@ -90,14 +72,21 @@ $isOwner = (isset($_SESSION['user_id']) && $property['id_user'] == $_SESSION['us
 
                    
                  <a href="<?= $whatsappUrl; ?>" target="_blank" class="whatsapp-btn">
-                  Contactez-moi
+                  Contact me
              </a>
-
-
-
-
-            </div> 
+        </div> 
         </div>
+       <div class="property-data">
+            <h3>Property Details</h3>
+            <p><strong>Description:</strong> <?= nl2br(htmlspecialchars($property['discription'])); ?></p>
+            <p><strong>Price:</strong> <?= number_format($property['price'], 2); ?> DH</p>
+            <p><strong>Type:</strong> <?= htmlspecialchars($property['type']); ?></p>
+            <p><strong>Rooms:</strong> <?= htmlspecialchars($property['rooms']); ?></p>
+            <p><strong>Location:</strong> <?= htmlspecialchars($property['city_name']); ?></p>
+        </div>
+
+        
+        
     </div>
 
     <div id="map-container" data-lat="<?= $property['latitude'] ?>" data-lng="<?= $property['longitude'] ?>">
@@ -118,11 +107,5 @@ function changeMainImage(src) {
 }
 </script>
 <?php
-if ($role === 'admin') {
-    include 'admin/includes/footer.php';
-    
-} else {
-    
-  include 'includes/footer.php';
-}
+ include "includes/footer.php";
 ?>

@@ -284,7 +284,7 @@ body {
     code view property
 =============================================*/
 .property-view {
-    max-width: 1400px;
+    max-width: 100%px;
     margin: 15;
     padding: 20px;
     background-color: #f6faff;

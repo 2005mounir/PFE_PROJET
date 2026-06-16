@@ -66,7 +66,7 @@ $properties = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2>Featured Listings</h2>
         <div class="listings-grid">
             <?php foreach ($properties as $prop): ?>
-                <a href="property_details.php?id=<?php echo $prop['id_property']; ?>" class="card">
+                <a href="detailsProperty.php?id=<?php echo $prop['id_property']; ?>" class="card">
                     <img src="<?php echo $prop['image_path'] ?? 'default.jpg'; ?>" alt="Property">
                     <div class="card-body">
                         <h3><?php echo htmlspecialchars($prop['title']); ?></h3>

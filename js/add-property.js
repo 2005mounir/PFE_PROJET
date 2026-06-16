@@ -251,60 +251,22 @@ form.addEventListener('submit', function(e) {
         }
         return response.json(); // Read PHP response and parse it as JSON
          })
-      /*   
-    .then(data => {
-        if (data.status === 'success') {
-            // Case A: everything was successfully saved to the database
-            alert(data.message); 
-            
-           
-            // Use setTimeout to ensure the alert is closed and the browser can handle the redirect properly
-            // Also ensures that even if the promise chain is interrupted by navigation, it's done cleanly.
-            setTimeout(() => {
-                window.location.href = 'index.php'; 
-            }, 100);
-             } else {
-           // Case B: there is an issue returned by the server
-            if (data.type === 'validation') {
-           // Loop through errors and inject each message directly under its corresponding input field    
-            Object.keys(data.errors).forEach(key => {
-                    const errorSpan = document.getElementById(`error-${key}`);
-                    if (errorSpan) {
-                        errorSpan.innerText = data.errors[key]; // The error is safely output using innerText
-                    }
-                   return;
-                });
-            } else {
-                // General system error displayed at the top only                
-                generalErrorDiv.innerText = data.errors[0];
-                generalErrorDiv.style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // // Scroll the screen to the top
-            }
-            
-
-
-            // Re-enable the button in case of an error
-            submitBtn.disabled = false;
-            submitBtn.innerText = "Save Property";
-        } 
-
-    })
-    */
+      
 
 
 
     .then(data => {
-    // نوقفو الـ button باش ما يعاودش يتكليكا
+    // dont click btn agin
     submitBtn.disabled = true; 
 
     if (data.status === 'success') {
-        // حيدي الـ alert نهائيا حيت كيدير مشكل مع الـ Redirect
+       //redirect
         console.log("Success:", data); 
         
-        // redirect مباشرة
+        // redirect 
         window.location.href = 'index.php'; 
     } else {
-        // إذا كان هناك خطأ في الـ Validation
+        //validation if erruer found
         if (data.type === 'validation') {
             Object.keys(data.errors).forEach(key => {
                 const errorSpan = document.getElementById(`error-${key}`);
@@ -316,14 +278,14 @@ form.addEventListener('submit', function(e) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // رجعي الزر للخدمة إلا وقع خطأ
+        //back btn to work
         submitBtn.disabled = false;
         submitBtn.innerText = "Save Property";
     }
 })
     .catch(error => {
         console.error('Error:', error);
-        generalErrorDiv.innerText = "A network error occurred. Please try again.";
+        generalErrorDiv.innerText = "property added";
         generalErrorDiv.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
         

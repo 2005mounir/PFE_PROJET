@@ -86,7 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>contact</title>
     
 <link rel="stylesheet" href="css/main.css">    
-<!-- Font Awesome Icon Library Required for the Header and Page -->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Font Awesome Icon Library Required for the Header and Page -->  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="contactBody">
 
